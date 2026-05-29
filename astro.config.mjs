@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-	site: 'https://example.com', // TODO: replace with real domain before deploying
+	site: 'https://oneb.pages.dev',
 	integrations: [mdx(), sitemap()],
 });

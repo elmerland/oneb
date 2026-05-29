@@ -24,6 +24,17 @@ Built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com)
 | `bun run preview` | Preview built output locally                |
 | `bun run books`   | Regenerate `src/content/books.yaml`         |
 | `bun run media`   | Fill in favicon images for media entries    |
+| `bun run deploy`  | Build and deploy to Cloudflare Pages        |
+
+## Deploying
+
+Commit and push your changes first, then:
+
+```bash
+bun run deploy
+```
+
+The script will refuse to run if there are uncommitted changes or if the current commit hasn't been pushed. On success it builds the site, deploys to Cloudflare Pages, tags the commit (`deploy/YYYYMMDD-HHMMSS`), and creates a GitHub release.
 
 ## Content
 

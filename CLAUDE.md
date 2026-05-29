@@ -23,7 +23,17 @@ Personal blog for past and ongoing projects. Deployed on Cloudflare Pages.
 bun run dev      # local dev server
 bun run build    # production build → dist/
 bun run preview  # preview the built output
+bun run deploy   # build + deploy to Cloudflare Pages (see below)
 ```
+
+## Deploying
+
+Run `bun run deploy` (wraps `scripts/deploy.sh`). The script:
+1. Aborts if there are uncommitted changes or the HEAD hasn't been pushed to remote.
+2. Runs `bun run build` and deploys via `wrangler pages deploy --branch main`.
+3. Tags the commit `deploy/YYYYMMDD-HHMMSS` and creates a GitHub release.
+
+**Always commit and push before deploying.**
 
 ## Source Structure
 

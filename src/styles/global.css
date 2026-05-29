@@ -30,6 +30,7 @@ body {
   font-family: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Roboto Mono", monospace;
   font-size: 14px;
   line-height: 1.7;
+  zoom: 1.25;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

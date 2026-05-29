@@ -1,0 +1,192 @@
+{
+  "https://itunes.apple.com/lookup?id=1002937870&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "artistId": 1007650168,
+        "collectionId": 1002937870,
+        "trackId": 1002937870,
+        "artistName": "Complexly",
+        "collectionName": "Dear Hank & John",
+        "trackName": "Dear Hank & John",
+        "collectionCensoredName": "Dear Hank & John",
+        "trackCensoredName": "Dear Hank & John",
+        "artistViewUrl": "https://podcasts.apple.com/us/artist/hank-green-and-john-green/1007650168?uo=4",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/dear-hank-john/id1002937870?uo=4",
+        "feedUrl": "https://rss.art19.com/dear-hank-john",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/dear-hank-john/id1002937870?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/2f/73/a2/2f73a255-e4a8-49e4-53a7-f1ae1211169b/mza_8948836678873619830.jpeg/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/2f/73/a2/2f73a255-e4a8-49e4-53a7-f1ae1211169b/mza_8948836678873619830.jpeg/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/2f/73/a2/2f73a255-e4a8-49e4-53a7-f1ae1211169b/mza_8948836678873619830.jpeg/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-27T12:00:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "notExplicit",
+        "trackCount": 449,
+        "trackTimeMillis": 2353,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Philosophy",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/2f/73/a2/2f73a255-e4a8-49e4-53a7-f1ae1211169b/mza_8948836678873619830.jpeg/600x600bb.jpg",
+        "genreIds": [
+          "1443",
+          "26",
+          "1324",
+          "1303",
+          "1495"
+        ],
+        "genres": [
+          "Philosophy",
+          "Podcasts",
+          "Society & Culture",
+          "Comedy",
+          "Improv"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=1050462261&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "collectionId": 1050462261,
+        "trackId": 1050462261,
+        "artistName": "Ben Gilbert and David Rosenthal",
+        "collectionName": "Acquired",
+        "trackName": "Acquired",
+        "collectionCensoredName": "Acquired",
+        "trackCensoredName": "Acquired",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/acquired/id1050462261?uo=4",
+        "feedUrl": "https://feeds.transistor.fm/acquired",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/acquired/id1050462261?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/43/c5/fb/43c5fbdf-b302-053a-2704-ba5f74322625/mza_13119989780540450831.jpg/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/43/c5/fb/43c5fbdf-b302-053a-2704-ba5f74322625/mza_13119989780540450831.jpg/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/43/c5/fb/43c5fbdf-b302-053a-2704-ba5f74322625/mza_13119989780540450831.jpg/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-18T03:26:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 214,
+        "trackTimeMillis": 13685,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Technology",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/43/c5/fb/43c5fbdf-b302-053a-2704-ba5f74322625/mza_13119989780540450831.jpg/600x600bb.jpg",
+        "genreIds": [
+          "1318",
+          "26",
+          "1321",
+          "1412"
+        ],
+        "genres": [
+          "Technology",
+          "Podcasts",
+          "Business",
+          "Investing"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=1330329512&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "collectionId": 1330329512,
+        "trackId": 1330329512,
+        "artistName": "Adam Gordon Bell - Software Developer",
+        "collectionName": "CoRecursive: Coding Stories",
+        "trackName": "CoRecursive: Coding Stories",
+        "collectionCensoredName": "CoRecursive: Coding Stories",
+        "trackCensoredName": "CoRecursive: Coding Stories",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/corecursive-coding-stories/id1330329512?uo=4",
+        "feedUrl": "https://rss.libsyn.com/shows/112428/destinations/628353.xml",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/corecursive-coding-stories/id1330329512?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/d1/68/fa/d168faa0-54ad-137d-c936-b728cdb61a06/mza_6770579440872689479.png/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/d1/68/fa/d168faa0-54ad-137d-c936-b728cdb61a06/mza_6770579440872689479.png/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/d1/68/fa/d168faa0-54ad-137d-c936-b728cdb61a06/mza_6770579440872689479.png/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-09T10:00:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 117,
+        "trackTimeMillis": 3370,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Tech News",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts114/v4/d1/68/fa/d168faa0-54ad-137d-c936-b728cdb61a06/mza_6770579440872689479.png/600x600bb.jpg",
+        "genreIds": [
+          "1528",
+          "26",
+          "1489",
+          "1304",
+          "1499"
+        ],
+        "genres": [
+          "Tech News",
+          "Podcasts",
+          "News",
+          "Education",
+          "How To"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=1614253637&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "collectionId": 1614253637,
+        "trackId": 1614253637,
+        "artistName": "PJ Vogt",
+        "collectionName": "Search Engine",
+        "trackName": "Search Engine",
+        "collectionCensoredName": "Search Engine",
+        "trackCensoredName": "Search Engine",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/search-engine/id1614253637?uo=4",
+        "feedUrl": "https://feeds.megaphone.fm/search-engine",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/search-engine/id1614253637?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/90/5b/62/905b6220-b426-6e2d-b97c-9f0a16ed31c4/mza_1372109499010593679.jpeg/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/90/5b/62/905b6220-b426-6e2d-b97c-9f0a16ed31c4/mza_1372109499010593679.jpeg/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/90/5b/62/905b6220-b426-6e2d-b97c-9f0a16ed31c4/mza_1372109499010593679.jpeg/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-26T04:00:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 148,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Technology",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/90/5b/62/905b6220-b426-6e2d-b97c-9f0a16ed31c4/mza_1372109499010593679.jpeg/600x600bb.jpg",
+        "genreIds": [
+          "1318",
+          "26",
+          "1324"
+        ],
+        "genres": [
+          "Technology",
+          "Podcasts",
+          "Society & Culture"
+        ]
+      }
+    ]
+  }
+}

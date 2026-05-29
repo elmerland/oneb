@@ -1,0 +1,62 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TAGLINES, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Taglines — ${SITE_TITLE}`} description="All possible taglines. You found the easter egg." />
+  </head>
+  <body>
+    <Header />
+    <main class="page">
+      <div class="post-header">
+        <h1 class="post-title">Taglines</h1>
+      </div>
+      <div class="prose">
+        <p>
+          The masthead picks one of these at random on every page load.
+          Inspired by <a href="https://theinfosphere.org/List_of_title_captions" class="t-text" target="_blank" rel="noopener">Futurama title captions</a>.
+          You found the easter egg.
+        </p>
+      </div>
+      <ol class="tagline-list">
+        {SITE_TAGLINES.map((tagline) => (
+          <li class="tagline-item" set:html={tagline} />
+        ))}
+      </ol>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .tagline-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 60px;
+    counter-reset: tagline;
+  }
+  .tagline-item {
+    counter-increment: tagline;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hair);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .tagline-item::before {
+    content: counter(tagline, decimal-leading-zero);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--dim);
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 2ch;
+  }
+</style>

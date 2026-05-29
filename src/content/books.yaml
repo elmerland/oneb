@@ -1,0 +1,280 @@
+- id: the-years-of-lyndon-johnson
+  title: The Years of Lyndon Johnson
+  author: Robert A. Caro
+  type: series
+  yearRead: 2026
+  cover: https://covers.openlibrary.org/b/id/12869907-L.jpg
+  genres:
+    - Biography
+    - Politics And Government
+    - Presidents
+  books:
+    - title: The Path To Power
+      isbn: "9780736613675"
+    - title: Means of Ascent
+      isbn: "9780517130544"
+    - title: Master of the Senate
+      isbn: "9780394528366"
+      inProgress: true
+- id: the-fabric-of-civilization
+  title: The Fabric of Civilization
+  author: Virginia Postrel
+  type: book
+  yearRead: 2026
+  isbn: "9781541617605"
+  cover: https://covers.openlibrary.org/b/id/10513142-L.jpg
+  genres:
+    - New York Times Reviewed
+    - Economics
+    - Textile Industry
+- id: blood-and-thunder
+  title: Blood and Thunder
+  author: Hampton Sides
+  type: book
+  yearRead: 2026
+  isbn: "9780739326725"
+  cover: https://covers.openlibrary.org/b/id/744812-L.jpg
+  genres:
+    - Frontier And Pioneer Life
+    - Indians Of North America
+    - Military History
+- id: the-expanse
+  title: The Expanse
+  author: James S. A. Corey
+  type: series
+  yearRead: 2025
+  cover: https://covers.openlibrary.org/b/id/7314237-L.jpg
+  genres:
+    - Space Warfare
+    - Interplanetary Voyages
+    - Conspiracies
+  books:
+    - title: Leviathan Wakes
+      isbn: "9780316515986"
+    - title: Caliban's war
+      isbn: "9788834729083"
+    - title: Abaddon's Gate
+      isbn: "9780356524153"
+    - title: Cibola burn
+      isbn: "9780356504179"
+    - title: Nemesis Games
+      isbn: "9781478933779"
+    - title: Babylon’s ashes
+      isbn: "9780356504261"
+    - title: Persepolis rising
+      isbn: "9780356510309"
+    - title: Tiamat's Wrath
+      isbn: "9788366409095"
+    - title: Leviathan Falls
+      isbn: "9780316332941"
+- id: the-power-broker-robert-moses-and-the-fall-of-new-york
+  title: "The power broker: Robert Moses and the fall of New York"
+  author: Robert A. Caro
+  type: book
+  yearRead: 2025
+  isbn: "9785557101264"
+  cover: https://covers.openlibrary.org/b/id/253659-L.jpg
+  genres:
+    - Urban Renewal
+    - New York (N.Y.), History
+    - Moses, Robert, 1888-1981
+- id: wager
+  title: Wager
+  author: David Grann
+  type: book
+  yearRead: 2025
+  isbn: "9780593678251"
+  cover: https://covers.openlibrary.org/b/id/13245246-L.jpg
+  genres:
+    - Great Britain, History, 1714-1837
+    - Mass Murder
+    - Shipwrecks
+- id: wide-wide-sea
+  title: Wide Wide Sea
+  author: Hampton Sides
+  type: book
+  yearRead: 2025
+  isbn: "9780385544771"
+  cover: https://covers.openlibrary.org/b/id/14663913-L.jpg
+  genres:
+    - Oceania, History
+- id: how-big-things-get-done
+  title: How Big Things Get Done
+  author: Bent Flyvbjerg
+  type: book
+  yearRead: 2025
+  isbn: "9781035018932"
+  cover: https://covers.openlibrary.org/b/id/13247891-L.jpg
+- id: dune
+  title: Dune
+  author: Frank Herbert
+  type: series
+  yearRead: 2022
+  cover: https://covers.openlibrary.org/b/id/11481354-L.jpg
+  genres:
+    - Dune (Imaginary Place)
+    - Fiction, Science Fiction, General
+    - Dune (Imaginary Place), Fiction
+  books:
+    - title: Dune
+      isbn: "9785237030778"
+    - title: Dune Messiah
+      isbn: "9780425053140"
+    - title: Children of Dune
+      isbn: "9783453186859"
+    - title: God Emperor of Dune
+      isbn: "9782724215908"
+    - title: Heretics of Dune
+      isbn: "9780613997249"
+    - title: Chapterhouse Dune
+      isbn: "9783453186880"
+- id: hitchhiker-s-guide-to-the-galaxy
+  title: Hitchhiker's Guide to the Galaxy
+  author: John Carnell
+  type: series
+  cover: https://covers.openlibrary.org/b/id/798101-L.jpg
+  genres:
+    - Science Fiction Comic Books, Strips
+    - Fiction, Science Fiction, General
+    - Fiction, Humorous, General
+  books:
+    - title: The Restaurant at the End of the Universe
+      isbn: "9781597770040"
+    - title: Life, the Universe and Everything
+      isbn: "9783453146051"
+    - title: So long, and thanks for all the fish
+      isbn: "9780756948160"
+    - title: Mostly Harmless
+      isbn: "9780754075707"
+    - title: The hitchhiker's guide to the galaxy
+      isbn: "9781596875869"
+- id: jack-reacher
+  title: Jack Reacher
+  author: Lee Child
+  type: series
+  cover: https://covers.openlibrary.org/b/id/11089125-L.jpg
+  genres:
+    - Private Investigators
+    - Murder
+    - Drifters
+  books:
+    - title: Killing Floor
+      isbn: "9781423339861"
+    - title: Die Trying
+      isbn: "9781407011752"
+    - title: Tripwire
+      isbn: "9781407011714"
+    - title: Running blind
+      isbn: "9780006155287"
+    - title: The enemy
+      isbn: "9789753295680"
+    - title: One Shot
+      isbn: "9785699611485"
+    - title: Nothing to Lose
+      isbn: "9780553818116"
+- id: ready-player-one
+  title: Ready Player One
+  author: Ernest Cline
+  type: book
+  isbn: "9780307887436"
+  cover: https://covers.openlibrary.org/b/id/8737626-L.jpg
+  genres:
+    - Regression (Civilization)
+    - Utopias
+    - Virtual Reality
+- id: ready-player-two
+  title: Ready Player Two
+  author: Ernest Cline
+  type: book
+  isbn: "9781780897431"
+  cover: https://covers.openlibrary.org/b/id/10250001-L.jpg
+  genres:
+    - Technology
+    - Regression (Civilization)
+    - Virtual Reality
+- id: revenge-of-the-tipping-point
+  title: Revenge of the Tipping Point
+  author: Malcolm Gladwell
+  type: book
+  isbn: "9780316575805"
+  cover: https://covers.openlibrary.org/b/id/14829976-L.jpg
+- id: the-bomber-mafia
+  title: The Bomber Mafia
+  author: Malcolm Gladwell
+  type: book
+  isbn: "9780316309851"
+  cover: https://covers.openlibrary.org/b/id/10716338-L.jpg
+  genres:
+    - New York Times Reviewed
+    - Aeronautics, Military
+    - World War, 1939-1945, Aerial Operations
+- id: talking-to-strangers
+  title: Talking to Strangers
+  author: Malcolm Gladwell
+  type: book
+  isbn: "9780316457453"
+  cover: https://covers.openlibrary.org/b/id/8779682-L.jpg
+  genres:
+    - Interpersonal Communication
+    - Strangers
+    - New York Times Reviewed
+- id: outliers
+  title: Outliers
+  author: Malcolm Gladwell
+  type: book
+  isbn: "9780141036243"
+  cover: https://covers.openlibrary.org/b/id/10021591-L.jpg
+  genres:
+    - Psychology
+    - Business
+    - Successful People
+- id: blink
+  title: Blink
+  author: Malcolm Gladwell
+  type: book
+  isbn: "9783593377797"
+  cover: https://covers.openlibrary.org/b/id/14421850-L.jpg
+  genres:
+    - Intuition
+    - Education
+    - Recovery
+- id: the-tipping-point
+  title: The Tipping Point
+  author: Malcolm Gladwell
+  type: book
+  isbn: "9780316346627"
+  cover: https://covers.openlibrary.org/b/id/10873292-L.jpg
+  genres:
+    - Contagion (Social Psychology)
+    - Business
+    - Causation
+- id: the-martian
+  title: The Martian
+  author: Andy Weir
+  type: book
+  isbn: "9789045207957"
+  cover: https://covers.openlibrary.org/b/id/11447888-L.jpg
+  genres:
+    - Science Fiction & Fantasy
+    - Suspense & Thriller
+    - Amerikanisches Englisch
+- id: artemis
+  title: Artemis
+  author: Andy Weir
+  type: book
+  isbn: "9789898917102"
+  cover: https://covers.openlibrary.org/b/id/8235551-L.jpg
+  genres:
+    - Smuggling
+    - Conspiracies
+    - Conspiraciones
+- id: project-hail-mary
+  title: Project Hail Mary
+  author: Andy Weir
+  type: book
+  isbn: "9780593135204"
+  cover: https://covers.openlibrary.org/b/id/11200092-L.jpg
+  genres:
+    - Hard Science-Fiction
+    - Hard Sci-Fi
+    - Nyt:Hardcover-Fiction=2021-05-23

@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const allBooks = (await getCollection('books')).sort((a, b) => {
+  const ay = a.data.yearRead, by = b.data.yearRead;
+  if (ay == null && by == null) return 0;
+  if (ay == null) return 1;
+  if (by == null) return -1;
+  return by - ay;
+});
+const media = await getCollection('media');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Library — ${SITE_TITLE}`} description="Books, blogs, videos, and media I find worth revisiting." />
+  </head>
+  <body>
+    <Header />
+    <main class="page">
+      <div class="post-header">
+        <h1 class="post-title">Library</h1>
+      </div>
+
+      <div class="library">
+
+        <!-- ── Media ── -->
+        <section class="lib-section">
+          <h2 class="lib-section-title">Media</h2>
+          <div class="pop-rule">
+            <span class="seg a"></span><span class="seg b"></span>
+            <span class="seg c"></span><span class="seg d"></span>
+            <span class="seg e"></span>
+          </div>
+          <ul class="lib-list">
+            {media.map((item) => (
+              <li class="lib-item lib-media">
+                {item.data.image && <img class="lib-media-img" src={item.data.image} alt="" loading="lazy" />}
+                <div>
+                  <div class="lib-item-body">
+                    {item.data.url
+                      ? <a href={item.data.url} class="lib-title t-text" target="_blank" rel="noopener">{item.data.title}</a>
+                      : <span class="lib-title">{item.data.title}</span>
+                    }
+                    {item.data.author && <span class="lib-author">{item.data.author}</span>}
+                  </div>
+                  <div class="lib-media-type">
+                    <span class={`lib-tag lib-tag-${item.data.type}`}>{item.data.type}</span>
+                  </div>
+                  {item.data.notes && <div class="lib-note">{item.data.notes}</div>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- ── Books ── -->
+        <section class="lib-section">
+          <h2 class="lib-section-title">Books</h2>
+          <div class="pop-rule">
+            <span class="seg a"></span><span class="seg b"></span>
+            <span class="seg c"></span><span class="seg d"></span>
+            <span class="seg e"></span>
+          </div>
+          <ul class="lib-list">
+            {allBooks.map((item) => (
+              <li class:list={['lib-item', 'no-tag', { 'lib-book': !!item.data.cover }]}>
+                {item.data.cover && (
+                  <img class="lib-cover" src={item.data.cover} alt={`Cover of ${item.data.title}`} loading="lazy" />
+                )}
+                <div>
+                  <div class="lib-item-body">
+                    {item.data.isbn
+                      ? <a href={`https://openlibrary.org/isbn/${item.data.isbn}`} class="lib-title t-text" target="_blank" rel="noopener">{item.data.title}</a>
+                      : <span class="lib-title">{item.data.title}</span>
+                    }
+                    {item.data.author && <span class="lib-author">{item.data.author}</span>}
+                    {item.data.inProgress && <span class="lib-tag lib-tag-reading">reading</span>}
+                  </div>
+                  {item.data.genres && (
+                    <div class="lib-genres">
+                      {item.data.genres.map((g) => <span class="lib-genre">{g}</span>)}
+                    </div>
+                  )}
+                  {item.data.type === 'series' && item.data.books && (
+                    <ol class="lib-series-list">
+                      {item.data.books.map((book) => (
+                        <li class:list={['lib-series-book', { 'lib-series-unread': book.unread }]}>
+                          {book.isbn
+                            ? <a href={`https://openlibrary.org/isbn/${book.isbn}`} class="t-text" target="_blank" rel="noopener">{book.title}</a>
+                            : book.title
+                          }
+                          {book.inProgress && <span class="lib-tag lib-tag-reading lib-tag-reading-series">📖 reading</span>}
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                  {item.data.notes && <div class="lib-note">{item.data.notes}</div>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,39 @@
+---
+import { SITE_TAGLINES } from '../consts';
+---
+
+<div class="page">
+  <header class="masthead">
+    <div class="plate">
+      <a href="/" class="t-glitch" aria-label="ONEB — home">
+<pre class="wordmark"
+>  ████████  ██     ██  ████████  ██████
+ ██      ██ ███    ██ ██        ██    ██
+ ██      ██ ██ ██  ██ ██████    ██████
+ ██      ██ ██  ██ ██ ██        ██    ██
+ ██      ██ ██   ████ ██        ██    ██
+  ████████  ██    ███  ████████ ██████<span class="dot">  ●</span></pre>
+      </a>
+    </div>
+    <div class="meta-col">
+      <p class="bio-name">Elmer's <a href="https://www.etymonline.com/word/blog" class="weblog-link" target="_blank" rel="noopener"><span class="weblog-we">we</span>blog</a></p>
+      <p class="bio-line">
+        &ldquo;<a href="/taglines" class="t-text" id="tagline-text">Look ma, no javascript!</a>&rdquo;
+        <a href="https://theinfosphere.org/List_of_title_captions" class="tagline-source" target="_blank" rel="noopener">inspired by</a>
+      </p>
+    </div>
+  </header>
+
+  <nav class="nav-strip" aria-label="Primary navigation">
+    <a href="/about"   class="nav-item nav-red">About</a>
+    <a href="/blog"    class="nav-item nav-cyan">Archives</a>
+    <a href="/rss.xml" class="nav-item nav-green">RSS</a>
+    <a href="/library" class="nav-item nav-yellow">Library</a>
+  </nav>
+</div>
+
+<script define:vars={{ taglines: SITE_TAGLINES }}>
+  const el = document.getElementById('tagline-text');
+  const bucket = Math.floor(Date.now() / (5 * 60 * 1000));
+  if (el) el.innerHTML = taglines[bucket % taglines.length];
+</script>

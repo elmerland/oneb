@@ -1,0 +1,9 @@
+---
+// Thin wrapper — nav is built directly in Header.astro.
+// Keep this for any one-off link needs that want the t-text hover style.
+import type { HTMLAttributes } from 'astro/types';
+type Props = HTMLAttributes<'a'>;
+const { href, class: className, ...props } = Astro.props;
+---
+
+<a href={href} class:list={['t-text', className]} {...props}><slot /></a>

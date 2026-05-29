@@ -1,0 +1,30 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="About — ONEB" description="About this log." />
+  </head>
+  <body>
+    <Header />
+    <main class="page">
+      <div class="post-header">
+        <h1 class="post-title">About</h1>
+      </div>
+      <div class="prose">
+        <p>
+          This is a personal log. A place for notes on things I've made, things I've noticed,
+          and things I can't stop thinking about.
+        </p>
+        <p>
+          You can reach me at <a href="mailto:oneb@fastmail.com" class="t-text">oneb@fastmail.com</a>.
+        </p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

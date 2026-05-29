@@ -12,7 +12,7 @@
     "astro": "astro",
     "books": "bun scripts/fetch-book-metadata.ts",
     "media": "bun scripts/fetch-media-metadata.ts",
-    "deploy": "bun run build && wrangler pages deploy"
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",

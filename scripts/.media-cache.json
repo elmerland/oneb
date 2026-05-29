@@ -188,5 +188,241 @@
         ]
       }
     ]
+  },
+  "https://itunes.apple.com/lookup?id=1770136136&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "collectionId": 1770136136,
+        "trackId": 1770136136,
+        "artistName": "Lisa Bunnage",
+        "collectionName": "BratBusters Parenting Podcast",
+        "trackName": "BratBusters Parenting Podcast",
+        "collectionCensoredName": "BratBusters Parenting Podcast",
+        "trackCensoredName": "BratBusters Parenting Podcast",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/bratbusters-parenting-podcast/id1770136136?uo=4",
+        "feedUrl": "https://rss.buzzsprout.com/2404296.rss",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/bratbusters-parenting-podcast/id1770136136?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/21/c4/b7/21c4b78a-f73b-ea8d-2235-d6147c8e18b6/mza_2578488636545536670.jpg/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/21/c4/b7/21c4b78a-f73b-ea8d-2235-d6147c8e18b6/mza_2578488636545536670.jpg/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/21/c4/b7/21c4b78a-f73b-ea8d-2235-d6147c8e18b6/mza_2578488636545536670.jpg/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-28T07:00:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 172,
+        "trackTimeMillis": 1076,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Parenting",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/21/c4/b7/21c4b78a-f73b-ea8d-2235-d6147c8e18b6/mza_2578488636545536670.jpg/600x600bb.jpg",
+        "genreIds": [
+          "1521",
+          "26",
+          "1305"
+        ],
+        "genres": [
+          "Parenting",
+          "Podcasts",
+          "Kids & Family"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=81294582&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "collectionId": 81294582,
+        "trackId": 81294582,
+        "artistName": "Cory Doctorow",
+        "collectionName": "Podcast – Cory Doctorow's craphound.com",
+        "trackName": "Podcast – Cory Doctorow's craphound.com",
+        "collectionCensoredName": "Podcast – Cory Doctorow's craphound.com",
+        "trackCensoredName": "Podcast – Cory Doctorow's craphound.com",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/podcast-cory-doctorows-craphound-com/id81294582?uo=4",
+        "feedUrl": "http://feeds.feedburner.com/doctorow_podcast",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/podcast-cory-doctorows-craphound-com/id81294582?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/ba/15/8a/ba158af0-9088-cc3e-663a-ca2da8c6aa80/mza_4445326991353148012.png/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/ba/15/8a/ba158af0-9088-cc3e-663a-ca2da8c6aa80/mza_4445326991353148012.png/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/ba/15/8a/ba158af0-9088-cc3e-663a-ca2da8c6aa80/mza_4445326991353148012.png/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-03T14:38:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 710,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Books",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/ba/15/8a/ba158af0-9088-cc3e-663a-ca2da8c6aa80/mza_4445326991353148012.png/600x600bb.jpg",
+        "genreIds": [
+          "1482",
+          "26",
+          "1301"
+        ],
+        "genres": [
+          "Books",
+          "Podcasts",
+          "Arts"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=1150800298&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "artistId": 920682569,
+        "collectionId": 1150800298,
+        "trackId": 1150800298,
+        "artistName": "Pushkin Industries",
+        "collectionName": "Heavyweight",
+        "trackName": "Heavyweight",
+        "collectionCensoredName": "Heavyweight",
+        "trackCensoredName": "Heavyweight",
+        "artistViewUrl": "https://podcasts.apple.com/us/artist/gimlet-media/920682569?uo=4",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/heavyweight/id1150800298?uo=4",
+        "feedUrl": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/afbd76b8-eff2-442a-b938-b28e0126edad/d08826cd-f888-4cd3-b700-b28e0126edbb/podcast.rss",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/heavyweight/id1150800298?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/a7/f4/11/a7f411fa-7d05-708c-b9e6-fbb79f16687f/mza_5278700449379998361.jpg/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/a7/f4/11/a7f411fa-7d05-708c-b9e6-fbb79f16687f/mza_5278700449379998361.jpg/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/a7/f4/11/a7f411fa-7d05-708c-b9e6-fbb79f16687f/mza_5278700449379998361.jpg/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-21T08:00:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "explicit",
+        "trackCount": 125,
+        "trackTimeMillis": 2242,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Personal Journals",
+        "contentAdvisoryRating": "Explicit",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/a7/f4/11/a7f411fa-7d05-708c-b9e6-fbb79f16687f/mza_5278700449379998361.jpg/600x600bb.jpg",
+        "genreIds": [
+          "1302",
+          "26",
+          "1324",
+          "1544"
+        ],
+        "genres": [
+          "Personal Journals",
+          "Podcasts",
+          "Society & Culture",
+          "Relationships"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=216478078&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "artistId": 292508590,
+        "collectionId": 216478078,
+        "trackId": 216478078,
+        "artistName": "Risky Business Media",
+        "collectionName": "Risky Business",
+        "trackName": "Risky Business",
+        "collectionCensoredName": "Risky Business",
+        "trackCensoredName": "Risky Business",
+        "artistViewUrl": "https://podcasts.apple.com/us/artist/itradio-com-au/292508590?uo=4",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/risky-business/id216478078?uo=4",
+        "feedUrl": "https://risky.biz/feeds/risky-business/",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/risky-business/id216478078?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ab/1b/98/ab1b98b1-a647-5bda-d4cd-e9937c2254de/mza_8709271612325930559.png/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ab/1b/98/ab1b98b1-a647-5bda-d4cd-e9937c2254de/mza_8709271612325930559.png/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ab/1b/98/ab1b98b1-a647-5bda-d4cd-e9937c2254de/mza_8709271612325930559.png/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-27T05:45:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 102,
+        "trackTimeMillis": 3623,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Tech News",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ab/1b/98/ab1b98b1-a647-5bda-d4cd-e9937c2254de/mza_8709271612325930559.png/600x600bb.jpg",
+        "genreIds": [
+          "1528",
+          "26",
+          "1489",
+          "1318"
+        ],
+        "genres": [
+          "Tech News",
+          "Podcasts",
+          "News",
+          "Technology"
+        ]
+      }
+    ]
+  },
+  "https://itunes.apple.com/lookup?id=1008577710&entity=podcast": {
+    "resultCount": 1,
+    "results": [
+      {
+        "wrapperType": "track",
+        "kind": "podcast",
+        "artistId": 920682569,
+        "collectionId": 1008577710,
+        "trackId": 1008577710,
+        "artistName": "Josh Muccio",
+        "collectionName": "The Pitch",
+        "trackName": "The Pitch",
+        "collectionCensoredName": "The Pitch",
+        "trackCensoredName": "The Pitch",
+        "artistViewUrl": "https://podcasts.apple.com/us/artist/gimlet-media/920682569?uo=4",
+        "collectionViewUrl": "https://podcasts.apple.com/us/podcast/the-pitch/id1008577710?uo=4",
+        "feedUrl": "https://feeds.megaphone.fm/thepitch",
+        "trackViewUrl": "https://podcasts.apple.com/us/podcast/the-pitch/id1008577710?uo=4",
+        "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0d/17/12/0d171246-3554-b777-dc16-fe0af7cad077/mza_7909769017199911597.jpg/30x30bb.jpg",
+        "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0d/17/12/0d171246-3554-b777-dc16-fe0af7cad077/mza_7909769017199911597.jpg/60x60bb.jpg",
+        "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0d/17/12/0d171246-3554-b777-dc16-fe0af7cad077/mza_7909769017199911597.jpg/100x100bb.jpg",
+        "collectionPrice": 0,
+        "trackPrice": 0,
+        "collectionHdPrice": 0,
+        "releaseDate": "2026-05-27T09:55:00Z",
+        "collectionExplicitness": "notExplicit",
+        "trackExplicitness": "cleaned",
+        "trackCount": 214,
+        "trackTimeMillis": 3195,
+        "country": "USA",
+        "currency": "USD",
+        "primaryGenreName": "Entrepreneurship",
+        "contentAdvisoryRating": "Clean",
+        "artworkUrl600": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0d/17/12/0d171246-3554-b777-dc16-fe0af7cad077/mza_7909769017199911597.jpg/600x600bb.jpg",
+        "genreIds": [
+          "1493",
+          "26",
+          "1321",
+          "1412"
+        ],
+        "genres": [
+          "Entrepreneurship",
+          "Podcasts",
+          "Business",
+          "Investing"
+        ]
+      }
+    ]
   }
 }

@@ -44,3 +44,44 @@
   url: https://podcasts.apple.com/us/podcast/search-engine/id1614253637
   image: >-
     https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/90/5b/62/905b6220-b426-6e2d-b97c-9f0a16ed31c4/mza_1372109499010593679.jpeg/600x600bb.jpg
+- id: bratbusters-parenting-podcast
+  title: BratBusters Parenting Podcast
+  author: Lisa Bunnage
+  type: podcast
+  url: https://podcasts.apple.com/us/podcast/bratbusters-parenting-podcast/id1770136136
+  image: >-
+    https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/21/c4/b7/21c4b78a-f73b-ea8d-2235-d6147c8e18b6/mza_2578488636545536670.jpg/600x600bb.jpg
+- id: cory-doctorows-craphound
+  title: Cory Doctorow's craphound.com
+  author: Cory Doctorow
+  type: blog
+  url: https://craphound.com
+  image: https://www.google.com/s2/favicons?sz=64&domain=craphound.com
+- id: cory-doctorows-podcast
+  title: Podcast — Cory Doctorow's craphound.com
+  author: Cory Doctorow
+  type: podcast
+  url: https://podcasts.apple.com/us/podcast/podcast-cory-doctorows-craphound-com/id81294582
+  image: >-
+    https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/ba/15/8a/ba158af0-9088-cc3e-663a-ca2da8c6aa80/mza_4445326991353148012.png/600x600bb.jpg
+- id: heavyweight
+  title: Heavyweight
+  author: Jonathan Goldstein
+  type: podcast
+  url: https://podcasts.apple.com/us/podcast/heavyweight/id1150800298
+  image: >-
+    https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/a7/f4/11/a7f411fa-7d05-708c-b9e6-fbb79f16687f/mza_5278700449379998361.jpg/600x600bb.jpg
+- id: risky-business
+  title: Risky Business
+  author: Risky Business Media
+  type: podcast
+  url: https://podcasts.apple.com/us/podcast/risky-business/id216478078
+  image: >-
+    https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ab/1b/98/ab1b98b1-a647-5bda-d4cd-e9937c2254de/mza_8709271612325930559.png/600x600bb.jpg
+- id: the-pitch
+  title: The Pitch
+  author: Josh Muccio
+  type: podcast
+  url: https://podcasts.apple.com/us/podcast/the-pitch/id1008577710
+  image: >-
+    https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0d/17/12/0d171246-3554-b777-dc16-fe0af7cad077/mza_7909769017199911597.jpg/600x600bb.jpg

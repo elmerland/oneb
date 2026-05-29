@@ -1,63 +1,75 @@
-# Astro Starter Kit: Blog
+# oneb — Personal Blog
 
-```sh
-bun create astro@latest -- --template blog
+Personal blog for past and ongoing projects. Deployed on Cloudflare Pages.
+
+Built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com), and [Bun](https://bun.sh).
+
+## Commands
+
+| Command           | Action                                      |
+| :---------------- | :------------------------------------------ |
+| `bun install`     | Install dependencies                        |
+| `bun run dev`     | Start local dev server at `localhost:4321`  |
+| `bun run build`   | Build production site to `./dist/`          |
+| `bun run preview` | Preview built output locally                |
+| `bun run books`   | Regenerate `src/content/books.yaml`         |
+| `bun run media`   | Fill in favicon images for media entries    |
+
+## Structure
+
+```
+src/
+  assets/         # images and fonts (processed by Astro/Sharp)
+  components/     # BaseHead, Header, Footer, etc.
+  content/
+    blog/         # .md and .mdx posts
+    books.yaml    # generated — edit scripts/fetch-book-metadata.ts instead
+    media.yaml    # edit by hand
+  layouts/
+    BlogPost.astro
+  pages/
+    index.astro
+    about.astro
+    library.astro
+    blog/[...slug].astro
+    rss.xml.js
+  styles/
+    global.css
+  consts.ts
+  content.config.ts
+scripts/
+  fetch-book-metadata.ts   # source of truth for the books list
+  fetch-media-metadata.ts  # fills in favicon images for media entries
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Content
 
-Features:
+### Blog posts
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Add `.md` or `.mdx` files to `src/content/blog/`. Required frontmatter:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```yaml
+---
+title: string
+description: string
+pubDate: Date
+updatedDate: Date   # optional
+heroImage: image()  # optional
+---
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Books
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Edit the `BOOKS` array in `scripts/fetch-book-metadata.ts`, then run:
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+```bash
+bun run books
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Media
 
-## 🧞 Commands
+Edit `src/content/media.yaml` by hand, then run:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+```bash
+bun run media
+```

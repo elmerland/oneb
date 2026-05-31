@@ -12,22 +12,32 @@
     "astro": "astro",
     "books": "bun scripts/fetch-book-metadata.ts",
     "media": "bun scripts/fetch-media-metadata.ts",
-    "deploy": "bash scripts/deploy.sh"
+    "deploy": "bash scripts/deploy.sh",
+    "links": "linkinator https://oneb.blog --recurse --skip 'linkedin\\.com' --format csv"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.0",
     "@astrojs/mdx": "^5.0.6",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^6.3.8",
-    "sharp": "^0.34.5"
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "astro": "^6.4.2",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "sanitize-html": "^2.17.4",
+    "sharp": "^0.34.5",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@astrojs/cloudflare": "^13.5.5",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/js-yaml": "^4.0.9",
-    "googleapis": "^173.0.0",
+    "@types/sanitize-html": "^2.16.1",
     "js-yaml": "^4.1.1",
+    "linkinator": "^7.6.1",
     "tailwindcss": "^4.3.0",
     "wrangler": "^4.95.0"
   }

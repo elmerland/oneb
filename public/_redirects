@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects
+# Format: /old-path  /new-path  301
+#
+# Example:
+# /blog/old-post-slug  /blog/new-post-slug  301

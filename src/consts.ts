@@ -1,5 +1,9 @@
 export const SITE_TITLE = 'ONEB—Elmer\'s weblog';
+export const DISCOURSE_URL = 'https://oneb.discourse.group';
+export const CF_ANALYTICS_TOKEN = ''; // set to your Cloudflare Web Analytics token
+export const MASTODON_URL = '';       // set to your Mastodon profile URL if you have one
 export const SITE_DESCRIPTION = 'Engineering notes, project write-ups, and the occasional strong opinion.';
+export const EMAIL = 'elmer@oneb.blog';
 export const GITHUB_URL = 'https://github.com/elmerland';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/elmer-landaverde-177a3890/';
 

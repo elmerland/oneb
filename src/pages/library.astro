@@ -22,7 +22,7 @@ const media = await getCollection('media');
   </head>
   <body>
     <Header />
-    <main class="page">
+    <main class="page" id="main-content">
       <div class="post-header">
         <h1 class="post-title">Library</h1>
       </div>
@@ -52,7 +52,7 @@ const media = await getCollection('media');
                   <div class="lib-media-type">
                     <span class={`lib-tag lib-tag-${item.data.type}`}>{item.data.type}</span>
                   </div>
-                  {item.data.notes && <div class="lib-note">{item.data.notes}</div>}
+                  {item.data.notes && <div class="lib-note" set:html={item.data.notes} />}
                 </div>
               </li>
             ))}

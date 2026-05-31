@@ -1,3 +1,9 @@
+- id: public-object
+  title: Public Object
+  author: Jesse Wilson
+  type: blog
+  url: https://publicobject.com
+  image: https://www.google.com/s2/favicons?sz=64&domain=publicobject.com
 - id: coding-horror
   title: CODING HORROR
   author: Jeff Atwood
@@ -23,6 +29,7 @@
   url: https://podcasts.apple.com/us/podcast/dear-hank-john/id1002937870
   image: >-
     https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/2f/73/a2/2f73a255-e4a8-49e4-53a7-f1ae1211169b/mza_8948836678873619830.jpeg/600x600bb.jpg
+  notes: DFTBA <img src="/Nerdfighteria_logo.png" alt="Nerdfighteria logo" />
 - id: acquired
   title: Acquired
   author: Ben Gilbert and David Rosenthal
@@ -85,3 +92,11 @@
   url: https://podcasts.apple.com/us/podcast/the-pitch/id1008577710
   image: >-
     https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0d/17/12/0d171246-3554-b777-dc16-fe0af7cad077/mza_7909769017199911597.jpg/600x600bb.jpg
+- id: revisionist-history
+  title: Revisionist History
+  author: Malcolm Gladwell
+  type: podcast
+  url: https://podcasts.apple.com/us/podcast/revisionist-history/id1119389968
+  image: >-
+    https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/a0/7f/c9/a07fc9da-34db-7247-3f7f-c89e18402e8a/mza_14499328907997822509.jpg/600x600bb.jpg
+  notes: The first few seasons are the best! It hasn't been as good as of late.

@@ -2,29 +2,40 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { Content } from '../content/about.mdx';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title="About — ONEB" description="About this log." />
+    <BaseHead title="About — ONEB" description="Staff engineer. Philadelphia. Opinions about distributed systems and very little else." />
   </head>
   <body>
     <Header />
-    <main class="page">
+    <main class="page" id="main-content">
       <div class="post-header">
         <h1 class="post-title">About</h1>
       </div>
       <div class="prose">
-        <p>
-          This is a personal log. A place for notes on things I've made, things I've noticed,
-          and things I can't stop thinking about.
-        </p>
-        <p>
-          You can reach me at <a href="mailto:oneb@fastmail.com" class="t-text">oneb@fastmail.com</a>.
-        </p>
+        <Content />
       </div>
     </main>
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  .about-photo {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .profile-photo {
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: var(--shadow);
+  }
+
+</style>

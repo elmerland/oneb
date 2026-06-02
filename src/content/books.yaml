@@ -172,6 +172,22 @@
       isbn: "9785699611485"
     - title: Nothing to Lose
       isbn: "9780553818116"
+- id: the-lord-of-the-rings
+  title: The Lord of the Rings
+  author: J.R.R. Tolkien
+  type: series
+  cover: https://covers.openlibrary.org/b/id/14627060-L.jpg
+  genres:
+    - Elves
+    - Dwarves
+    - Evil
+  books:
+    - title: The Fellowship of the Ring
+      isbn: "9788445000663"
+    - title: The Two Towers
+      isbn: "9782266120982"
+    - title: The Return of the King
+      isbn: "9780458907700"
 - id: ready-player-one
   title: Ready Player One
   author: Ernest Cline
@@ -278,3 +294,13 @@
     - Hard Science-Fiction
     - Hard Sci-Fi
     - Nyt:Hardcover-Fiction=2021-05-23
+- id: designing-data-intensive-applications
+  title: Designing Data-Intensive Applications
+  author: Martin Kleppmann
+  type: book
+  isbn: "9788426734679"
+  cover: https://covers.openlibrary.org/b/id/8434671-L.jpg
+  genres:
+    - Development
+    - Web Site Development
+    - Application Software

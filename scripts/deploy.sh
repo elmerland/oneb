@@ -14,6 +14,12 @@ if ! git branch -r --contains HEAD | grep -q .; then
   exit 1
 fi
 
+# Guard: wrangler authentication
+if ! wrangler whoami &>/dev/null; then
+  echo "Error: not authenticated with Cloudflare. Run 'wrangler login' and try again."
+  exit 1
+fi
+
 bun run build
 wrangler pages deploy --branch main
 

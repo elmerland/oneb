@@ -119,6 +119,10 @@ const BOOKS: InputBook[] = [
   { title: 'The Fabric of Civilization', yearRead: 2026 },
   { title: 'Blood and Thunder', yearRead: 2026 },
   { title: 'How Big Things Get Done', isbn: '9781035018949', yearRead: 2025 },
+  { title: 'Designing Data-Intensive Applications' },
+  { title: 'The Fellowship of the Ring', isbn: '9780007770120' },
+  { title: 'The Two Towers', isbn: '9780007770113' },
+  { title: 'The Return of the King', isbn: '9780345253453' }
 ];
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -235,8 +239,8 @@ function buildOLUrl(params: Record<string, string | undefined>): string {
 
 async function fetchOpenLibrary(title: string, isbn?: string, authorQuery?: string): Promise<OLResult> {
   const url = isbn
-    ? buildOLUrl({ isbn, fields: OL_FIELDS, limit: '1' })
-    : buildOLUrl({ title, author_name: authorQuery, fields: OL_FIELDS, limit: '5' });
+    ? buildOLUrl({ isbn, language: 'eng', fields: OL_FIELDS, limit: '1' })
+    : buildOLUrl({ title, author_name: authorQuery, language: 'eng', fields: OL_FIELDS, limit: '5' });
 
   const data = await cachedFetch(url) as any;
   if (!data) return {};

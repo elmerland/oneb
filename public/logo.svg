@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 210" width="600" height="210" role="img" aria-label="ONEB">
+  <!-- Shadow plate -->
+  <rect x="10" y="10" width="584" height="192" fill="#ff5d3a"/>
+  <!-- Card -->
+  <rect x="0" y="0" width="584" height="192" fill="#fafaf5" stroke="#171a20" stroke-width="3"/>
+
+  <!-- Pixel grid: 18×18 px squares with 2px gap = 20px cell -->
+  <!-- Letters on a 5-wide × 7-tall grid each, 20px margins L/R, 26px margin top -->
+  <!-- O: x=28, N: x=148, E: x=268, B: x=388 -->
+  <!-- row y offsets: r0=26, r1=46, r2=66, r3=86, r4=106, r5=126, r6=146 -->
+
+  <!-- O (5×7): .XXX. / X...X / X...X / X...X / X...X / X...X / .XXX. -->
+  <!-- row 0 -->
+  <rect x="48"  y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="68"  y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="88"  y="26" width="18" height="18" fill="#171a20"/>
+  <!-- row 1 -->
+  <rect x="28"  y="46" width="18" height="18" fill="#171a20"/>
+  <rect x="108" y="46" width="18" height="18" fill="#171a20"/>
+  <!-- row 2 -->
+  <rect x="28"  y="66" width="18" height="18" fill="#171a20"/>
+  <rect x="108" y="66" width="18" height="18" fill="#171a20"/>
+  <!-- row 3 -->
+  <rect x="28"  y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="108" y="86" width="18" height="18" fill="#171a20"/>
+  <!-- row 4 -->
+  <rect x="28"  y="106" width="18" height="18" fill="#171a20"/>
+  <rect x="108" y="106" width="18" height="18" fill="#171a20"/>
+  <!-- row 5 -->
+  <rect x="28"  y="126" width="18" height="18" fill="#171a20"/>
+  <rect x="108" y="126" width="18" height="18" fill="#171a20"/>
+  <!-- row 6 -->
+  <rect x="48"  y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="68"  y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="88"  y="146" width="18" height="18" fill="#171a20"/>
+
+  <!-- N (5×7): X...X / XX..X / X.X.X / X..XX / X...X / X...X / X...X -->
+  <!-- col offsets from x=148: c0=148, c1=168, c2=188, c3=208, c4=228 -->
+  <!-- row 0 -->
+  <rect x="148" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="26" width="18" height="18" fill="#171a20"/>
+  <!-- row 1 -->
+  <rect x="148" y="46" width="18" height="18" fill="#171a20"/>
+  <rect x="168" y="46" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="46" width="18" height="18" fill="#171a20"/>
+  <!-- row 2 -->
+  <rect x="148" y="66" width="18" height="18" fill="#171a20"/>
+  <rect x="188" y="66" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="66" width="18" height="18" fill="#171a20"/>
+  <!-- row 3 -->
+  <rect x="148" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="208" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="86" width="18" height="18" fill="#171a20"/>
+  <!-- row 4 -->
+  <rect x="148" y="106" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="106" width="18" height="18" fill="#171a20"/>
+  <!-- row 5 -->
+  <rect x="148" y="126" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="126" width="18" height="18" fill="#171a20"/>
+  <!-- row 6 -->
+  <rect x="148" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="228" y="146" width="18" height="18" fill="#171a20"/>
+
+  <!-- E (5×7): XXXXX / X.... / X.... / XXXX. / X.... / X.... / XXXXX -->
+  <!-- col offsets: c0=268, c1=288, c2=308, c3=328, c4=348 -->
+  <!-- row 0 -->
+  <rect x="268" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="288" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="308" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="328" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="348" y="26" width="18" height="18" fill="#171a20"/>
+  <!-- row 1 -->
+  <rect x="268" y="46" width="18" height="18" fill="#171a20"/>
+  <!-- row 2 -->
+  <rect x="268" y="66" width="18" height="18" fill="#171a20"/>
+  <!-- row 3 -->
+  <rect x="268" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="288" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="308" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="328" y="86" width="18" height="18" fill="#171a20"/>
+  <!-- row 4 -->
+  <rect x="268" y="106" width="18" height="18" fill="#171a20"/>
+  <!-- row 5 -->
+  <rect x="268" y="126" width="18" height="18" fill="#171a20"/>
+  <!-- row 6 -->
+  <rect x="268" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="288" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="308" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="328" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="348" y="146" width="18" height="18" fill="#171a20"/>
+
+  <!-- B (5×7): XXXX. / X...X / X...X / XXXX. / X...X / X...X / XXXX. -->
+  <!-- col offsets: c0=388, c1=408, c2=428, c3=448, c4=468 -->
+  <!-- row 0 -->
+  <rect x="388" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="408" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="428" y="26" width="18" height="18" fill="#171a20"/>
+  <rect x="448" y="26" width="18" height="18" fill="#171a20"/>
+  <!-- row 1 -->
+  <rect x="388" y="46" width="18" height="18" fill="#171a20"/>
+  <rect x="468" y="46" width="18" height="18" fill="#171a20"/>
+  <!-- row 2 -->
+  <rect x="388" y="66" width="18" height="18" fill="#171a20"/>
+  <rect x="468" y="66" width="18" height="18" fill="#171a20"/>
+  <!-- row 3 -->
+  <rect x="388" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="408" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="428" y="86" width="18" height="18" fill="#171a20"/>
+  <rect x="448" y="86" width="18" height="18" fill="#171a20"/>
+  <!-- row 4 -->
+  <rect x="388" y="106" width="18" height="18" fill="#171a20"/>
+  <rect x="468" y="106" width="18" height="18" fill="#171a20"/>
+  <!-- row 5 -->
+  <rect x="388" y="126" width="18" height="18" fill="#171a20"/>
+  <rect x="468" y="126" width="18" height="18" fill="#171a20"/>
+  <!-- row 6 -->
+  <rect x="388" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="408" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="428" y="146" width="18" height="18" fill="#171a20"/>
+  <rect x="448" y="146" width="18" height="18" fill="#171a20"/>
+
+  <!-- Accent dot: coral, bottom-right of B -->
+  <circle cx="496" cy="158" r="9" fill="#ff5d3a"/>
+</svg>

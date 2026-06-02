@@ -35,6 +35,15 @@ Run `bun run deploy` (wraps `scripts/deploy.sh`). The script:
 
 **Always commit and push before deploying.**
 
+## Deploy Troubleshooting
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `Authentication error [code: 10000]` | Wrangler session expired | Run `wrangler login` |
+| `Failed to automatically retrieve account IDs` | Same expired auth | Run `wrangler login` |
+| `Error: uncommitted changes present` | Dirty working tree | Commit or stash changes first |
+| `Error: current commit has not been pushed to remote` | Local commit not on remote | `git push` before deploying |
+
 ## Source Structure
 
 ```

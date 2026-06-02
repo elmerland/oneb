@@ -26,6 +26,9 @@ pnpm-debug.log*
 # Open Library fetch cache
 scripts/.openlibrary-cache.json
 
+# Media metadata fetch cache
+scripts/.media-cache.json
+
 # Google Books OAuth credentials and token (never commit these)
 scripts/.google-oauth-credentials.json
 scripts/.google-oauth-token.json

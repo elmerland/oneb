@@ -16,6 +16,7 @@ And folks took the initiative to email me:
 
 ![Email screenshot](../../assets/agentic-mfw/agentic-mfw-email.png)
  
+---
 
 [^1]: All the pages of the series that I’m aware of: [mf website](https://motherfuckingwebsite.com), [better mfw](http://bettermotherfuckingwebsite.com), [even better mfw](https://evenbettermotherfucking.website), [best mfw](https://thebestmotherfucking.website), [perfect mfw](https://perfectmotherfuckingwebsite.com), [secure mfw](https://securemotherfuckingwebsite.com).
 

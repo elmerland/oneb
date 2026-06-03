@@ -14,4 +14,6 @@ Over the years, I’ve made several attempts at a personal blog. First, when I l
 
 Creating a blog wasn’t the original goal. The goal was to create a calculator site to tell a story about the unintuitive nature of large numbers. But as I struggled with the mess that is modern web development, I decided to keep a journal of my progress, which eventually became this blog. The “oneb” name was initially inspired by getting lazy writing *onebillionseconds* over and over again. The name grew on me and took on a meaning of its own: one blog, one bit/byte, or a play on words of an ordered list that doesn’t discriminate (“one, b, III”). I’m curious to see where this blog iteration goes and how long it sticks around. Thanks for reading!
 
+---
+
 [^1]: Me from the future! LLMs are a thing. They will make a pretty-looking website for me, while I remain blissfully unaware of how to write CSS.

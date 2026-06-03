@@ -43,6 +43,8 @@ const postUrl = `/blog/${post.id}/`;
           window.DiscourseEmbed = {
             discourseUrl: DISCOURSE_URL + '/',
             discourseEmbedUrl: canonicalUrl,
+            fullApp: true,
+            embedHeight: '800px',
           };
           (function () {
             var d = document.createElement('script');
@@ -62,7 +64,7 @@ const postUrl = `/blog/${post.id}/`;
         <slot />
       </div>
       <div class="post-discussion-link">
-        <a href={`${postUrl}#discussion`} class="t-text discussion-link">Discussion</a>
+        <a href={`${postUrl}#discussion`} class="t-text discussion-link">Join the discussion</a>
       </div>
     </>
   )}

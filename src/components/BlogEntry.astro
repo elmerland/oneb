@@ -1,0 +1,80 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import { DISCOURSE_URL } from '../consts';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  mode: 'full' | 'preview' | 'summary';
+}
+
+const { post, mode } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const embedUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
+const { title, pubDate, updatedDate, description } = post.data;
+const postUrl = `/blog/${post.id}/`;
+---
+
+<article
+  class:list={[{ post: mode !== 'full' }]}
+  data-embed-url={mode === 'preview' ? embedUrl : undefined}
+>
+  <div class="post-header">
+    {mode === 'full'
+      ? <h1 class="post-title">{title}</h1>
+      : <h2 class="post-title"><a href={postUrl} class="t-text">{title}</a></h2>
+    }
+    <div class="post-date">
+      <FormattedDate date={pubDate} />
+      {updatedDate && (
+        <span class="post-date-updated"> | updated <FormattedDate date={updatedDate} /></span>
+      )}
+    </div>
+  </div>
+
+  {mode === 'full' && (
+    <>
+      <div class="prose">
+        <slot />
+      </div>
+      <div class="discussion" id="discussion">
+        <div id="discourse-comments"></div>
+        <script define:vars={{ DISCOURSE_URL, canonicalUrl }}>
+          window.DiscourseEmbed = {
+            discourseUrl: DISCOURSE_URL + '/',
+            discourseEmbedUrl: canonicalUrl,
+          };
+          (function () {
+            var d = document.createElement('script');
+            d.type = 'text/javascript';
+            d.async = true;
+            d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+            (document.head || document.body).appendChild(d);
+          })();
+        </script>
+      </div>
+    </>
+  )}
+
+  {mode === 'preview' && (
+    <>
+      <div class="post-body prose">
+        <slot />
+      </div>
+      <div class="post-discussion-link">
+        <a href={`${postUrl}#discussion`} class="t-text discussion-link">Discussion</a>
+      </div>
+    </>
+  )}
+
+  {mode === 'summary' && (
+    <>
+      <div class="post-body">
+        <p>{description}</p>
+      </div>
+      <div class="post-discussion-link">
+        <a href={`${postUrl}#discussion`} class="t-text">Discussion</a>
+      </div>
+    </>
+  )}
+</article>

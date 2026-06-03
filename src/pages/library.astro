@@ -2,8 +2,11 @@
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
+
+const lastUpdated = new Date('2026-06-02');
 
 const allBooks = (await getCollection('books')).sort((a, b) => {
   const ay = a.data.yearRead, by = b.data.yearRead;
@@ -25,6 +28,7 @@ const media = await getCollection('media');
     <main class="page" id="main-content">
       <div class="post-header">
         <h1 class="post-title">Library</h1>
+        <div class="post-date">updated <FormattedDate date={lastUpdated} /></div>
       </div>
 
       <div class="library">
@@ -37,7 +41,7 @@ const media = await getCollection('media');
             <span class="seg c"></span><span class="seg d"></span>
             <span class="seg e"></span>
           </div>
-          <ul class="lib-list">
+          <ul class="lib-list lib-media-grid">
             {media.map((item) => (
               <li class="lib-item lib-media">
                 {item.data.image && <img class="lib-media-img" src={item.data.image} alt="" loading="lazy" />}
@@ -67,11 +71,13 @@ const media = await getCollection('media');
             <span class="seg c"></span><span class="seg d"></span>
             <span class="seg e"></span>
           </div>
-          <ul class="lib-list">
+          <ul class="lib-list lib-books-grid">
             {allBooks.map((item) => (
               <li class:list={['lib-item', 'no-tag', { 'lib-book': !!item.data.cover }]}>
                 {item.data.cover && (
-                  <img class="lib-cover" src={item.data.cover} alt={`Cover of ${item.data.title}`} loading="lazy" />
+                  <div class:list={['lib-cover-wrap', { 'lib-series-cover': item.data.type === 'series' }]}>
+                    <img class="lib-cover" src={item.data.cover} alt={`Cover of ${item.data.title}`} loading="lazy" />
+                  </div>
                 )}
                 <div>
                   <div class="lib-item-body">
@@ -82,11 +88,6 @@ const media = await getCollection('media');
                     {item.data.author && <span class="lib-author">{item.data.author}</span>}
                     {item.data.inProgress && <span class="lib-tag lib-tag-reading">reading</span>}
                   </div>
-                  {item.data.genres && (
-                    <div class="lib-genres">
-                      {item.data.genres.map((g) => <span class="lib-genre">{g}</span>)}
-                    </div>
-                  )}
                   {item.data.type === 'series' && item.data.books && (
                     <ol class="lib-series-list">
                       {item.data.books.map((book) => (
@@ -99,6 +100,11 @@ const media = await getCollection('media');
                         </li>
                       ))}
                     </ol>
+                  )}
+                  {item.data.genres && (
+                    <div class="lib-genres">
+                      {item.data.genres.map((g) => <span class="lib-genre">{g}</span>)}
+                    </div>
                   )}
                   {item.data.notes && <div class="lib-note">{item.data.notes}</div>}
                 </div>

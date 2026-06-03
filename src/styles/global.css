@@ -203,6 +203,7 @@ body {
   font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
   color: var(--plate); font-weight: 700;
 }
+.post-date-updated { color: var(--dim); font-weight: 400; }
 
 .post-title {
   margin: 0 0 16px;
@@ -217,6 +218,12 @@ body {
 }
 .post-body p { margin: 0 0 12px; text-wrap: pretty; }
 .post-body p:last-child { margin-bottom: 0; }
+
+.post-discussion-link {
+  margin-top: 10px;
+  font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 700;
+  color: var(--dim);
+}
 
 /* ── Pop rule (between posts) ────────────────────────────────── */
 .pop-rule {
@@ -350,6 +357,118 @@ body {
   width: 56px; display: block;
   border: 1.5px solid var(--plate);
 }
+
+/* ── Books grid (2 col on large, 1 col on small; cover left, text right) ── */
+.lib-books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px 16px;
+  align-items: start;
+}
+
+.lib-books-grid .lib-item.lib-book {
+  grid-template-columns: 72px 1fr;
+  gap: 0 14px;
+  align-items: start;
+}
+.lib-books-grid .lib-cover {
+  width: 72px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+.lib-books-grid .lib-item-body {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+.lib-books-grid .lib-title  { font-size: 13px; line-height: 1.4; }
+.lib-books-grid .lib-author { font-size: 11px; }
+.lib-books-grid .lib-genres {
+  margin-top: 4px;
+  display: block;
+}
+.lib-books-grid .lib-genre {
+  display: inline;
+  border: none;
+  padding: 0;
+  font-size: 10px;
+  color: var(--dim);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.lib-books-grid .lib-genre + .lib-genre::before {
+  content: ', ';
+  font-style: normal;
+}
+.lib-books-grid .lib-series-list {
+  margin-top: 6px;
+}
+.lib-books-grid .lib-series-book {
+  font-size: 11px;
+  color: var(--ink);
+}
+.lib-books-grid .lib-series-unread {
+  opacity: 0.45;
+}
+.lib-books-grid .lib-note   { font-size: 11px; }
+
+/* ── Series cover stacked-book decoration ────────────────────── */
+.lib-books-grid .lib-cover-wrap {
+  position: relative;
+}
+.lib-books-grid .lib-series-cover {
+  padding-right: 9px;
+  padding-bottom: 9px;
+}
+.lib-books-grid .lib-series-cover::before,
+.lib-books-grid .lib-series-cover::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 9px; bottom: 9px;
+  border: 1.5px solid var(--plate);
+}
+.lib-books-grid .lib-series-cover::before {
+  transform: translate(4px, 4px);
+  background: var(--c-yellow);
+  z-index: 1;
+}
+.lib-books-grid .lib-series-cover::after {
+  transform: translate(9px, 9px);
+  background: var(--c-red);
+  z-index: 0;
+}
+.lib-books-grid .lib-series-cover .lib-cover {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Media grid (multi-column) ───────────────────────────────── */
+.lib-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px 16px;
+  align-items: start;
+}
+
+.lib-media-grid .lib-item.lib-media {
+  grid-template-columns: 1fr;
+  gap: 8px 0;
+  align-items: start;
+}
+.lib-media-grid .lib-media-img {
+  width: 56px; height: 56px;
+}
+.lib-media-grid .lib-item-body {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+.lib-media-grid .lib-title  { font-size: 12px; line-height: 1.4; }
+.lib-media-grid .lib-author { font-size: 11px; }
+.lib-media-grid .lib-media-type { margin-top: 4px; }
+.lib-media-grid .lib-note   { font-size: 11px; }
 
 .lib-genres {
   display: flex; flex-wrap: wrap; gap: 4px;

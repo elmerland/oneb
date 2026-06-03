@@ -2,6 +2,7 @@
 title: "ONEBILLIONSECONDS.IO"
 description: "A billion seconds is a long time. This post is shorter. It covers the calculator I built to mark the milestone, and how it accidentally became a blog."
 pubDate: 2024-03-14
+updatedDate: 2026-06-02
 ---
 
 I did not think I was going to get old... how wrong I was! Years ago, I watched Neil deGrasse Tyson [explain](https://youtu.be/YPenDUY68rM?t=302) how deceptively long one billion seconds is. One billion seconds is a good way of splitting a hypothetical 90-year life into three parts. Having recently passed my first one-billion-second milestone, I felt the need to make something to commemorate the moment. As a nerd with little creativity, I decided to make a one-billion-second calculator website: [onebillionseconds.io](onebillionseconds.io)

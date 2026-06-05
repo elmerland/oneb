@@ -58,6 +58,18 @@
   url: https://podcasts.apple.com/us/podcast/bratbusters-parenting-podcast/id1770136136
   image: >-
     https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/21/c4/b7/21c4b78a-f73b-ea8d-2235-d6147c8e18b6/mza_2578488636545536670.jpg/600x600bb.jpg
+- id: martinfowler
+  title: Martin Fowler
+  author: Martin Fowler
+  type: blog
+  url: https://martinfowler.com
+  image: https://www.google.com/s2/favicons?sz=64&domain=martinfowler.com
+- id: jepsen
+  title: Jepsen
+  author: Kyle Kingsbury
+  type: blog
+  url: https://jepsen.io
+  image: https://www.google.com/s2/favicons?sz=64&domain=jepsen.io
 - id: cory-doctorows-craphound
   title: Cory Doctorow's craphound.com
   author: Cory Doctorow

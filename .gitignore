@@ -32,3 +32,4 @@ scripts/.media-cache.json
 # Google Books OAuth credentials and token (never commit these)
 scripts/.google-oauth-credentials.json
 scripts/.google-oauth-token.json
+/.wrangler/

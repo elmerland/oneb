@@ -5,6 +5,7 @@ import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import remarkGfm from 'remark-gfm';
 import { defineConfig } from 'astro/config';
+import rehypeFigure from './src/plugins/rehype-figure.ts';
 
 export default defineConfig({
 	site: 'https://oneb.blog',
@@ -24,6 +25,6 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		processor: unified({ remarkPlugins: [remarkGfm] }),
+		processor: unified({ remarkPlugins: [remarkGfm], rehypePlugins: [rehypeFigure] }),
 	},
 });

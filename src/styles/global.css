@@ -137,15 +137,6 @@ body {
   text-wrap: pretty;
 }
 
-.tagline-source {
-  display: block;
-  margin-top: 3px;
-  font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--dim); text-decoration: none;
-  font-weight: 400;
-}
-.tagline-source:hover { color: var(--ink); }
-
 /* ── Rule strip ──────────────────────────────────────────────── */
 .rule-strip { margin-top: 24px; height: 6px; display: flex; }
 .rule-strip > span { display: block; height: 100%; }
@@ -207,8 +198,9 @@ body {
 
 .post-title {
   margin: 0 0 16px;
+  font-family: "IBM Plex Sans", ui-sans-serif, sans-serif;
   font-size: clamp(26px, 4.4vw, 36px);
-  font-weight: 800; text-transform: uppercase; letter-spacing: 0;
+  font-weight: 700; letter-spacing: 0;
   line-height: 1.1; color: var(--ink);
 }
 .post-title a { color: inherit; }
@@ -244,6 +236,7 @@ body {
 }
 
 .prose {
+  font-family: "IBM Plex Serif", Georgia, serif;
   font-size: 14px; line-height: 1.78; max-width: 74ch;
   padding-bottom: 24px;
 }
@@ -251,6 +244,7 @@ body {
 .prose p:last-child { margin-bottom: 0; }
 .prose h1, .prose h2, .prose h3,
 .prose h4, .prose h5, .prose h6 {
+  font-family: "IBM Plex Sans", ui-sans-serif, sans-serif;
   font-weight: 800; text-transform: uppercase;
   letter-spacing: 0; line-height: 1.1;
   color: var(--ink); margin: 2em 0 0.6em;
@@ -284,10 +278,18 @@ body {
 .prose li { margin-bottom: 6px; }
 .prose hr { border: none; border-top: 1px solid var(--hair); margin: 28px 0; }
 .prose img {
-  max-width: 100%; height: auto;
+  max-width: 65%; height: auto;
   border: 1.5px solid var(--plate);
   box-shadow: 6px 6px 0 0 var(--plate);
-  margin: 0 0 20px; display: block;
+  margin: 0 auto 20px; display: block;
+}
+.prose figure {
+  margin: 0 0 20px;
+}
+.prose figcaption {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--dim);
 }
 
 /* ── Footer ──────────────────────────────────────────────────── */
@@ -575,4 +577,5 @@ body {
     border: 1.5px solid var(--plate); margin: -0.75px 0 0 -0.75px;
   }
   .nav-item + .nav-item { border-left: 1.5px solid var(--plate); }
+  .prose img { max-width: 100%; }
 }

@@ -47,12 +47,12 @@ import { SITE_TAGLINES, SITE_TITLE } from '../consts';
     gap: 16px;
     padding: 10px 0;
     border-bottom: 1px solid var(--hair);
-    font-size: 14px;
+    font-size: var(--fs-base);
     line-height: 1.5;
   }
   .tagline-item::before {
     content: counter(tagline, decimal-leading-zero);
-    font-size: 10px;
+    font-size: var(--fs-2xs);
     letter-spacing: 1.5px;
     color: var(--dim);
     font-weight: 700;

@@ -17,6 +17,21 @@
   --shadow:   8px 8px 0 0 var(--c-red);
   --gutter:   clamp(20px, 5vw, 56px);
   --content-max: 980px;
+
+  /* Type scale — every size derives from --fs-base, rebased from the
+     original 14px design so all sizes stay proportional. Change --fs-base
+     to rescale the whole system; the "N / 14" numerator is the size's
+     original pixel value. */
+  --fs-base: 1rem;                              /* 16px */
+  --fs-3xs:  calc(var(--fs-base) *  9 / 14);    /* ~10.3px */
+  --fs-2xs:  calc(var(--fs-base) * 10 / 14);    /* ~11.4px */
+  --fs-xs:   calc(var(--fs-base) * 11 / 14);    /* ~12.6px */
+  --fs-sm:   calc(var(--fs-base) * 12 / 14);    /* ~13.7px */
+  --fs-md:   calc(var(--fs-base) * 13 / 14);    /* ~14.9px */
+  --fs-lg:   calc(var(--fs-base) * 20 / 14);    /* ~22.9px */
+  --fs-display: clamp(calc(var(--fs-base) * 22 / 14), calc(3.4vw * 16 / 14), calc(var(--fs-base) * 32 / 14)); /* ~25–36.6px */
+  --fs-h1:      clamp(calc(var(--fs-base) * 26 / 14), calc(4.4vw * 16 / 14), calc(var(--fs-base) * 36 / 14)); /* ~29.7–41.1px */
+  --fs-h2:      clamp(calc(var(--fs-base) * 20 / 14), calc(3.2vw * 16 / 14), calc(var(--fs-base) * 28 / 14)); /* ~22.9–32px */
 }
 
 /* ── Reset ───────────────────────────────────────────────────── */
@@ -28,7 +43,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Roboto Mono", monospace;
-  font-size: 14px;
+  font-size: var(--fs-base);
   line-height: 1.7;
   zoom: 1.25;
   -webkit-font-smoothing: antialiased;
@@ -97,7 +112,7 @@ body {
 .wordmark {
   margin: 0;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 13px; line-height: 1.05;
+  font-size: var(--fs-md); line-height: 1.05;
   color: var(--plate); letter-spacing: 0;
   white-space: pre;
 }
@@ -111,7 +126,7 @@ body {
 
 .bio-name {
   margin: 0;
-  font-size: clamp(22px, 3.4vw, 32px);
+  font-size: var(--fs-display);
   font-weight: 800; text-transform: uppercase; letter-spacing: 0;
   line-height: 1; color: var(--plate);
   display: flex; align-items: baseline; gap: 10px;
@@ -133,7 +148,7 @@ body {
 
 .bio-line {
   margin: 0;
-  font-size: 12px; line-height: 1.55; color: var(--ink);
+  font-size: var(--fs-sm); line-height: 1.55; color: var(--ink);
   text-wrap: pretty;
 }
 
@@ -162,7 +177,7 @@ body {
   flex: 0 0 130px; width: 130px; position: relative;
   display: flex; align-items: center; justify-content: center;
   text-decoration: none; color: var(--plate);
-  font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: var(--fs-sm); letter-spacing: 2.5px; text-transform: uppercase;
   font-weight: 700; padding: 0 14px;
   transition: box-shadow 120ms ease;
 }
@@ -186,12 +201,12 @@ body {
 .nav-item:nth-child(5) { background: var(--c-green); }
 
 /* ── Posts feed ──────────────────────────────────────────────── */
-.posts { padding: 36px 0 60px; }
+.posts { padding: 0 0 2rem; }
 .post + .post { margin-top: 30px; }
 
 .post-date {
   margin: 0 0 10px;
-  font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+  font-size: var(--fs-xs); letter-spacing: 1.8px; text-transform: uppercase;
   color: var(--plate); font-weight: 700;
 }
 .post-date-updated { color: var(--dim); font-weight: 400; }
@@ -199,14 +214,14 @@ body {
 .post-title {
   margin: 0 0 16px;
   font-family: "IBM Plex Sans", ui-sans-serif, sans-serif;
-  font-size: clamp(26px, 4.4vw, 36px);
+  font-size: var(--fs-h1);
   font-weight: 700; letter-spacing: 0;
   line-height: 1.1; color: var(--ink);
 }
 .post-title a { color: inherit; }
 
 .post-body {
-  font-size: 14px; line-height: 1.78; max-width: 74ch;
+  font-size: var(--fs-base); line-height: 1.78; max-width: 74ch;
 }
 .post-body p { margin: 0 0 12px; text-wrap: pretty; }
 .post-body p:last-child { margin-bottom: 0; }
@@ -214,7 +229,7 @@ body {
 
 .post-discussion-link {
   margin-top: 10px;
-  font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 700;
+  font-size: var(--fs-xs); letter-spacing: 1.8px; text-transform: uppercase; font-weight: 700;
   color: var(--dim);
 }
 
@@ -237,7 +252,7 @@ body {
 
 .prose {
   font-family: "IBM Plex Serif", Georgia, serif;
-  font-size: 14px; line-height: 1.78; max-width: 74ch;
+  font-size: var(--fs-base); line-height: 1.78; max-width: 74ch;
   padding-bottom: 24px;
 }
 .prose p { margin: 0 0 16px; text-wrap: pretty; }
@@ -249,9 +264,9 @@ body {
   letter-spacing: 0; line-height: 1.1;
   color: var(--ink); margin: 2em 0 0.6em;
 }
-.prose h1 { font-size: clamp(26px, 4.4vw, 36px); }
-.prose h2 { font-size: clamp(20px, 3.2vw, 28px); }
-.prose h3 { font-size: 20px; }
+.prose h1 { font-size: var(--fs-h1); }
+.prose h2 { font-size: var(--fs-h2); }
+.prose h3 { font-size: var(--fs-lg); }
 .prose a { color: inherit; }
 .prose strong, .prose b { font-weight: 700; }
 .prose code {
@@ -266,7 +281,7 @@ body {
   border: 1.5px solid var(--plate);
   box-shadow: 6px 6px 0 0 var(--c-red);
   overflow-x: auto; margin: 0 0 20px;
-  font-size: 13px; line-height: 1.6;
+  font-size: var(--fs-md); line-height: 1.6;
 }
 .prose pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
 .prose blockquote {
@@ -288,7 +303,7 @@ body {
 }
 .prose figcaption {
   margin-top: 8px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--dim);
 }
 
@@ -297,7 +312,7 @@ body {
   border-top: 1.5px solid var(--plate);
   margin-top: 0;
   padding: 18px 0 32px;
-  font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+  font-size: var(--fs-xs); letter-spacing: 1.2px; text-transform: uppercase;
   color: var(--dim);
   display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
 }
@@ -326,7 +341,7 @@ body {
 .lib-item.no-tag { grid-template-columns: 1fr; }
 
 .lib-tag {
-  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: var(--fs-2xs); letter-spacing: 1.5px; text-transform: uppercase;
   font-weight: 700; color: var(--plate);
   padding: 2px 7px; border: 1.5px solid var(--plate);
   white-space: nowrap; align-self: center;
@@ -338,14 +353,14 @@ body {
 
 .lib-item-body { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 
-.lib-title { font-weight: 700; font-size: 14px; }
+.lib-title { font-weight: 700; font-size: var(--fs-base); }
 
-.lib-author { font-size: 12px; color: var(--dim); }
+.lib-author { font-size: var(--fs-sm); color: var(--dim); }
 
 .lib-note {
   grid-column: 1 / -1;
   margin: 4px 0 0;
-  font-size: 12px; line-height: 1.6; color: var(--dim);
+  font-size: var(--fs-sm); line-height: 1.6; color: var(--dim);
   max-width: 64ch;
 }
 .lib-item.no-tag .lib-note { margin-top: 4px; }
@@ -384,8 +399,8 @@ body {
   align-items: flex-start;
   gap: 3px;
 }
-.lib-books-grid .lib-title  { font-size: 13px; line-height: 1.4; }
-.lib-books-grid .lib-author { font-size: 11px; }
+.lib-books-grid .lib-title  { font-size: var(--fs-md); line-height: 1.4; }
+.lib-books-grid .lib-author { font-size: var(--fs-xs); }
 .lib-books-grid .lib-genres {
   margin-top: 4px;
   display: block;
@@ -394,7 +409,7 @@ body {
   display: inline;
   border: none;
   padding: 0;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--dim);
   font-weight: 400;
   font-style: italic;
@@ -409,13 +424,13 @@ body {
   margin-top: 6px;
 }
 .lib-books-grid .lib-series-book {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--ink);
 }
 .lib-books-grid .lib-series-unread {
   opacity: 0.45;
 }
-.lib-books-grid .lib-note   { font-size: 11px; }
+.lib-books-grid .lib-note   { font-size: var(--fs-xs); }
 
 /* ── Series cover stacked-book decoration ────────────────────── */
 .lib-books-grid .lib-cover-wrap {
@@ -468,24 +483,24 @@ body {
   align-items: flex-start;
   gap: 3px;
 }
-.lib-media-grid .lib-title  { font-size: 12px; line-height: 1.4; }
-.lib-media-grid .lib-author { font-size: 11px; }
+.lib-media-grid .lib-title  { font-size: var(--fs-sm); line-height: 1.4; }
+.lib-media-grid .lib-author { font-size: var(--fs-xs); }
 .lib-media-grid .lib-media-type { margin-top: 4px; }
-.lib-media-grid .lib-note   { font-size: 11px; }
+.lib-media-grid .lib-note   { font-size: var(--fs-xs); }
 
 .lib-genres {
   display: flex; flex-wrap: wrap; gap: 4px;
   margin-top: 6px;
 }
 .lib-genre {
-  font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  font-size: var(--fs-2xs); letter-spacing: 1px; text-transform: uppercase;
   font-weight: 700; color: var(--dim);
   border: 1px solid var(--hair); padding: 1px 6px;
 }
 
 .lib-isbn {
   margin-top: 4px;
-  font-size: 10px; letter-spacing: 0.5px; color: var(--dim);
+  font-size: var(--fs-2xs); letter-spacing: 0.5px; color: var(--dim);
 }
 
 .lib-series-list {
@@ -495,7 +510,7 @@ body {
   flex-direction: column;
 }
 .lib-series-book {
-  font-size: 12px; color: var(--dim);
+  font-size: var(--fs-sm); color: var(--dim);
   padding-left: 14px; position: relative;
   display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
 }
@@ -506,7 +521,7 @@ body {
   opacity: 0.35;
 }
 .lib-tag-reading-series {
-  font-size: 9px; padding: 1px 5px;
+  font-size: var(--fs-3xs); padding: 1px 5px;
   border-width: 1px; letter-spacing: 1px;
   align-self: center;
 }
@@ -539,7 +554,7 @@ body {
   z-index: 9999;
   background: var(--plate); color: var(--cream);
   padding: 8px 16px;
-  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700;
+  font-size: var(--fs-sm); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700;
   text-decoration: none;
 }
 .skip-link:focus { top: 8px; }
@@ -564,16 +579,16 @@ body {
   .masthead  { flex-direction: column; gap: 16px; padding-top: 28px; }
   .meta-col  { padding: 0; gap: 10px; }
   .plate     { box-shadow: 6px 6px 0 0 var(--c-red); padding: 16px 18px 14px; }
-  .wordmark  { font-size: 8px; }
-  .bio-name  { font-size: 24px; }
-  .bio-line  { font-size: 11px; }
+  .wordmark  { font-size: calc(var(--fs-base) * 8 / 14); }  /* one-off: keeps ASCII art intact on small screens */
+  .bio-name  { font-size: calc(var(--fs-base) * 24 / 14); }
+  .bio-line  { font-size: var(--fs-xs); }
   .nav-strip {
     height: auto; width: 100%; flex-wrap: wrap;
     padding: 0; border: none; box-shadow: 3px 3px 0 0 var(--plate);
   }
   .nav-item {
     flex: 1 1 110px; width: auto; padding: 14px 10px;
-    font-size: 11px; letter-spacing: 1.6px;
+    font-size: var(--fs-xs); letter-spacing: 1.6px;
     border: 1.5px solid var(--plate); margin: -0.75px 0 0 -0.75px;
   }
   .nav-item + .nav-item { border-left: 1.5px solid var(--plate); }

@@ -111,7 +111,7 @@ body {
 .wordmark {
   margin: 0;
   font-family: "IBM Plex Mono", monospace;
-  font-size: var(--fs-md); line-height: 1.05;
+  font-size: var(--fs-3xs); line-height: 1.05;
   color: var(--plate); letter-spacing: 0;
   white-space: pre;
 }
@@ -164,7 +164,7 @@ body {
 /* ── Nav strip ───────────────────────────────────────────────── */
 .nav-strip {
   margin-top: 24px;
-  display: inline-flex; max-width: 100%;
+  display: flex; width: fit-content; max-width: 100%;
   align-items: stretch; flex-wrap: nowrap;
   height: 52px;
   background: var(--cream);
@@ -173,7 +173,7 @@ body {
 }
 
 .nav-item {
-  flex: 0 0 130px; width: 130px; position: relative;
+  flex: 0 1 130px; width: 130px; position: relative;
   display: flex; align-items: center; justify-content: center;
   text-decoration: none; color: var(--plate);
   font-size: var(--fs-sm); letter-spacing: 2.5px; text-transform: uppercase;
@@ -293,38 +293,28 @@ body {
 .prose li { margin-bottom: 6px; }
 .prose hr { border: none; border-top: 1px solid var(--hair); margin: 28px 0; }
 .prose img {
-  max-width: 65%; height: auto;
+  max-width: 70%; height: auto;
   border: 1.5px solid var(--plate);
   box-shadow: 6px 6px 0 0 var(--plate);
-  margin: 0 auto 20px; display: block;
+  margin: 0 auto 0; display: block;
 }
 .prose figure {
-  margin: 0 0 20px;
+  margin: 0 auto 20px;
+  display: table;
 }
 .prose figcaption {
+  display: table-caption;
+  caption-side: bottom;
   margin-top: 8px;
   font-size: var(--fs-xs);
   color: var(--dim);
+  text-align: center;
 }
 
 /* ── Footnotes ───────────────────────────────────────────────── */
-.prose sup { line-height: 0; }
-
 .prose sup a[data-footnote-ref] {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: var(--fs-3xs);
-  font-weight: 700;
   color: var(--c-red);
   text-decoration: none;
-  border: 1.5px solid currentColor;
-  padding: 1px 4px;
-  line-height: 1.4;
-  vertical-align: super;
-  transition: background 120ms, color 120ms;
-}
-.prose sup a[data-footnote-ref]:hover {
-  background: var(--c-red);
-  color: var(--cream);
 }
 
 .prose .footnotes {

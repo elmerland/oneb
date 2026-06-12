@@ -16,7 +16,7 @@
 
   --shadow:   8px 8px 0 0 var(--c-red);
   --gutter:   clamp(20px, 5vw, 56px);
-  --content-max: 980px;
+  --content-max: 760px;
 
   /* Type scale — every size derives from --fs-base, rebased from the
      original 14px design so all sizes stay proportional. Change --fs-base
@@ -45,7 +45,6 @@ body {
   font-family: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "Roboto Mono", monospace;
   font-size: var(--fs-base);
   line-height: 1.7;
-  zoom: 1.25;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -218,7 +217,8 @@ body {
   font-weight: 700; letter-spacing: 0;
   line-height: 1.1; color: var(--ink);
 }
-.post-title a { color: inherit; }
+.post-title a { color: inherit; text-decoration: none; }
+.post-title a:hover { text-decoration: underline; }
 
 .post-body {
   font-size: var(--fs-base); line-height: 1.78; max-width: 74ch;
@@ -307,12 +307,87 @@ body {
   color: var(--dim);
 }
 
+/* ── Footnotes ───────────────────────────────────────────────── */
+.prose sup { line-height: 0; }
+
+.prose sup a[data-footnote-ref] {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-3xs);
+  font-weight: 700;
+  color: var(--c-red);
+  text-decoration: none;
+  border: 1.5px solid currentColor;
+  padding: 1px 4px;
+  line-height: 1.4;
+  vertical-align: super;
+  transition: background 120ms, color 120ms;
+}
+.prose sup a[data-footnote-ref]:hover {
+  background: var(--c-red);
+  color: var(--cream);
+}
+
+.prose .footnotes {
+  margin-top: 48px;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: var(--fs-xs);
+}
+
+.prose .footnotes #footnote-label::before {
+  content: "// ";
+}
+.prose .footnotes #footnote-label {
+  content: "// footnotes";
+  display: block;
+  color: var(--c-red);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-2xs);
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+.prose .footnotes ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: fn;
+}
+.prose .footnotes li {
+  counter-increment: fn;
+  display: flex;
+  align-items: flex-start;
+  padding: .3rem 0;
+  gap: .1rem;
+  margin: 0;
+}
+.prose .footnotes li:last-child { border-bottom: none; }
+.prose .footnotes li::before {
+  content: counter(fn);
+  flex: 0 0 auto;
+  color: var(--c-red);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-3xs);
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 0.2em;
+}
+.prose .footnotes p {
+  margin: 0;
+  line-height: 1.65;
+}
+.prose .footnotes a[data-footnote-backref] {
+  color: var(--c-red);
+  text-decoration: none;
+  margin-left: 6px;
+  font-size: var(--fs-2xs);
+}
+
 /* ── Footer ──────────────────────────────────────────────────── */
 .site-footer {
   border-top: 1.5px solid var(--plate);
   margin-top: 0;
   padding: 18px 0 32px;
-  font-size: var(--fs-xs); letter-spacing: 1.2px; text-transform: uppercase;
+  font-size: var(--fs-xs); letter-spacing: 1.2px;
   color: var(--dim);
   display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
 }
@@ -575,7 +650,6 @@ body {
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 720px) {
-  body { zoom: 1; }
   .masthead  { flex-direction: column; gap: 16px; padding-top: 28px; }
   .meta-col  { padding: 0; gap: 10px; }
   .plate     { box-shadow: 6px 6px 0 0 var(--c-red); padding: 16px 18px 14px; }

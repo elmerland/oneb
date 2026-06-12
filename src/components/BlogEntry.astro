@@ -22,7 +22,7 @@ const postUrl = `/blog/${post.id}/`;
   <div class="post-header">
     {mode === 'full'
       ? <h1 class="post-title">{title}</h1>
-      : <h2 class="post-title"><a href={postUrl} class="t-text">{title}</a></h2>
+      : <h2 class="post-title"><a href={postUrl}>{title}</a></h2>
     }
     <div class="post-date">
       <FormattedDate date={pubDate} />

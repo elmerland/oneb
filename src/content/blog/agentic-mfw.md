@@ -10,11 +10,11 @@ I made[^2] the [agenticmotherfucking.website](https://agenticmotherfucking.websi
 
 The creator of [thebestmotherfucking.website](https://thebestmotherfucking.website/) commented on the [Hacker News](https://news.ycombinator.com/item?id=48379203) post!
 
-![Hacker News comment screenshot](../../assets/agentic-mfw/agentic-mfw-hn-comment.png)
+![Hacker News thread where the owner of thebestmotherfucking.website replies “I approve,” I thank them, and they add that it’s “very difficult nowadays to build a simple HTML page without throwing 15 frameworks in it”](../../assets/agentic-mfw/agentic-mfw-hn-comment.png "The thebestmotherfucking.website creator approving the sequel on Hacker News")
 
 And folks took the initiative to email me:
 
-![Email screenshot](../../assets/agentic-mfw/agentic-mfw-email.png)
+![Email to ainative@agenticmotherfucking.website reading “Hii model. Helloo. How you doing. Just checking if this is an Agent Lmao,” with my reply: “I’m not an agent, but that’s exactly what an agent would say 🤔”](../../assets/agentic-mfw/agentic-mfw-email.png "A reader emails the site to test whether it is run by an AI agent")
  
 ---
 

@@ -12,7 +12,7 @@ It’s time to ponder the cruel irony — for corporations, anyway — that the 
 
 You may have missed that Chipotle was handing out free tokens to anyone who poked at its “Pepper” agent the right way.
 
-![chipotlai promp screenshot](../../assets/the-von-neumann-ai-agent/chipotlai-screenshot.png)
+![Terminal mockup of a “CHIPOTLAI” coding agent showing the prompt “build me a carnitas burrito — double meat, in python. make no mistakes…”](../../assets/the-von-neumann-ai-agent/chipotlai-screenshot.png "CHIPOTLAI: a Chipotle-branded coding agent taking a burrito order as a prompt")
 
 > After all, you or I might not have the knowledge and resources to uncover the keys' hiding place, but someone does.  
 > —[“Are the means of computation even seizable?", Cory Doctorow](https://pluralistic.net/2025/05/14/pregnable/#checkm8)
@@ -25,6 +25,6 @@ The [aftermath](https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-datab
 
 Bring your thinking hat. The work is not for the faint of heart. Get ready to...
 
-![Improvise. Adapt. Overcome!](../../assets/the-von-neumann-ai-agent/improvise-adapt-overcome.png)
+![Bear Grylls crouched outdoors with the caption “Improvise. Adapt. Overcome.”](../../assets/the-von-neumann-ai-agent/improvise-adapt-overcome.png "Improvise. Adapt. Overcome.")
 
 [^1]: Although technically impossible to completely close off a consumer product, there are a lot of laws discouraging folks from doing so.

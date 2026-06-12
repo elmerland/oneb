@@ -224,6 +224,7 @@ body {
   font-size: var(--fs-base); line-height: 1.78; max-width: 74ch;
 }
 .post-body p { margin: 0 0 12px; text-wrap: pretty; }
+.post-summary { font-family: "IBM Plex Serif", Georgia, serif; }
 .post-body p:last-child { margin-bottom: 0; }
 .post-body .footnotes { display: none; }
 

@@ -1,6 +1,6 @@
 ---
 title: "The Von Neumann AI Agent"
-description: “Giving an AI agent enough freedom to be useful exposes it to attack. Lock it down, and it’s useless. There’s no clean answer — just trade-offs.”
+description: "Giving an AI agent enough freedom to be useful exposes it to attack. Lock it down, and it’s useless. There’s no clean answer — just trade-offs."
 pubDate: 2026-06-04
 ---
 

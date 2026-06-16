@@ -4,18 +4,18 @@ Personal blog for past and ongoing projects. Deployed on Cloudflare Pages.
 
 ## Tech Stack
 
-| Tool | Role | Status |
-|------|------|--------|
-| Astro 6 | Framework | ✅ configured |
-| Bun | Package manager + runtime | ✅ configured |
-| Tailwind CSS 4 + @tailwindcss/typography | Styling | ⚠️ installed, not yet wired into `astro.config.mjs` |
-| Shiki | Syntax highlighting (via Astro's built-in markdown config) | ⚠️ not yet configured |
-| Sharp | Image processing | ✅ installed |
-| @astrojs/mdx | MDX support | ✅ configured |
-| @astrojs/rss | RSS feed | ✅ installed (`src/pages/rss.xml.js`) |
-| @astrojs/sitemap | Sitemap | ✅ configured |
-| @astrojs/cloudflare | Cloudflare Pages adapter | ⚠️ installed, not yet added to `astro.config.mjs` |
-| Cloudflare Web Analytics | Analytics (script tag, no package) | ⚠️ not yet added to `BaseHead.astro` |
+| Tool | Role |
+|------|------|
+| Astro 6 | Framework |
+| Bun | Package manager + runtime |
+| Tailwind CSS 4 + @tailwindcss/typography | Styling |
+| Shiki | Syntax highlighting (via Astro's built-in markdown config) |
+| Sharp | Image processing |
+| @astrojs/mdx | MDX support |
+| @astrojs/rss | RSS feed |
+| @astrojs/sitemap | Sitemap |
+| @astrojs/cloudflare | Cloudflare Pages adapter |
+| Cloudflare Web Analytics | Analytics (script tag, no package) |
 
 ## Commands
 
@@ -75,20 +75,30 @@ description: string    # required
 pubDate: Date          # required
 updatedDate: Date      # optional
 heroImage: image()     # optional
+draft: boolean         # optional; true hides post from listings
 ---
 ```
 
 ## Design Reference
 
-The visual style guide lives in `.claude/visual-identity/`. **Before writing or modifying
-any visual component — layouts, pages, typography, spacing, color, or UI elements — read
-the relevant files below and implement to match them faithfully.**
+**Before writing or modifying any visual component — layouts, pages, typography, spacing,
+color, or UI elements — read the design guidelines and implement to match them faithfully.**
 
 | File | Purpose |
 |------|---------|
-| `.claude/visual-identity/theme.html` | Core visual theme: colors, typography, design tokens |
-| `.claude/visual-identity/look_and_feel_manual.html` | Overall aesthetic direction and style rules |
-| `.claude/visual-identity/viewport_reference.html` | Layout behavior across viewport sizes |
+| `docs/ui-guidelines.html` | Single source of truth: palette, type scale, layout, all components, usage rules, CSS tokens |
+
+The guidelines document is a self-contained HTML file that demonstrates every component
+live as it describes it. Open it in a browser or read the source directly. The file
+mirrors the actual implementation in `src/styles/global.css` — if the two ever diverge,
+trust `global.css` and update the guidelines.
+
+Key facts to remember without reading:
+- **Three typefaces**: IBM Plex Mono (UI chrome), IBM Plex Sans (post titles + prose headings), IBM Plex Serif (prose body + summaries)
+- **Type scale**: CSS custom properties off `--fs-base: 1rem` — never hard-code px sizes
+- **Content max**: `760px` · gutter: `clamp(20px, 5vw, 56px)` · mobile breakpoint: `720px`
+- **Borders**: always `1.5px solid var(--plate)` · shadows always hard offset down-right
+- **Accents**: 5 CRT colors in fixed positional order (red → cyan → yellow → plum → green); one per element, never paired
 
 ## Library Content
 
@@ -118,5 +128,6 @@ bun run media
 - Use Bun, not npm or pnpm, for all package management
 - Prefer `.astro` components; use `.mdx` only when interactive components are needed in posts
 - Images go in `src/assets/` (Astro optimizes them); static files with no processing go in `public/`
+- To add a caption to an image, use the Markdown title syntax: `![alt text](image.jpg "Caption text")` — the `rehype-figure` plugin converts this into a `<figure>` + `<figcaption>` pair
 - Keep global styles in `src/styles/global.css`; component-scoped styles in `<style>` blocks
 - `site` in `astro.config.mjs` must be set to the real production URL before deploying (currently placeholder)

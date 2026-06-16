@@ -1,0 +1,1459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ONEB — UI Design Guidelines</title>
+
+<!-- IBM Plex family: all three faces used by the site -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400&display=swap" />
+
+<style>
+/* ────────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   Source of truth: src/styles/global.css
+   Do not change values here without changing global.css first.
+──────────────────────────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --bg:     #fafaf5;
+  --plate:  #171a20;
+  --ink:    #171a20;
+  --cream:  #fafaf5;
+  --dim:    rgba(23, 26, 32, 0.55);
+  --hair:   rgba(23, 26, 32, 0.16);
+
+  /* CRT accent palette */
+  --c-red:    #ff5d3a;   /* amber flare    */
+  --c-cyan:   #00c2ff;   /* ice cyan       */
+  --c-yellow: #ffd60a;   /* hot yellow     */
+  --c-plum:   #ff2d75;   /* magenta pulse  */
+  --c-green:  #00d97e;   /* phosphor green */
+
+  /* Shadows — always hard offset, pointing down-right */
+  --shadow:        8px 8px 0 0 var(--c-red);
+  --shadow-plate:  4px 4px 0 0 var(--plate);
+  --shadow-red-sm: 6px 6px 0 0 var(--c-red);
+
+  /* Layout */
+  --gutter:      clamp(20px, 5vw, 56px);
+  --content-max: 760px;
+
+  /* Type scale — derived from --fs-base so the whole system scales
+     together. The "N / 14" fractions preserve the original pixel
+     ratios from the 14px design baseline.                         */
+  --fs-base:    1rem;                                                    /* 16px  */
+  --fs-3xs:     calc(var(--fs-base) *  9 / 14);                         /* ~10px */
+  --fs-2xs:     calc(var(--fs-base) * 10 / 14);                         /* ~11px */
+  --fs-xs:      calc(var(--fs-base) * 11 / 14);                         /* ~13px */
+  --fs-sm:      calc(var(--fs-base) * 12 / 14);                         /* ~14px */
+  --fs-md:      calc(var(--fs-base) * 13 / 14);                         /* ~15px */
+  --fs-lg:      calc(var(--fs-base) * 20 / 14);                         /* ~23px */
+  --fs-display: clamp(calc(var(--fs-base) * 22 / 14), calc(3.4vw * 16 / 14), calc(var(--fs-base) * 32 / 14));
+  --fs-h1:      clamp(calc(var(--fs-base) * 26 / 14), calc(4.4vw * 16 / 14), calc(var(--fs-base) * 36 / 14));
+  --fs-h2:      clamp(calc(var(--fs-base) * 20 / 14), calc(3.2vw * 16 / 14), calc(var(--fs-base) * 28 / 14));
+}
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* ── Base ────────────────────────────────────────────────────── */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--c-red); color: var(--cream); }
+
+/* ── Animations (same keyframes as global.css) ─────────────── */
+@keyframes blink   { 50% { opacity: 0; } }
+@keyframes pulse   { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes t-glitch-anim {
+  0%   { text-shadow: -4px 0 0 rgba(0,228,255,0.95),  4px 0 0 rgba(255,40,80,0.95); transform: translateX(0); }
+  50%  { text-shadow: -6px 0 0 rgba(0,228,255,0.95),  6px 0 0 rgba(255,40,80,0.95); transform: translateX(1px); }
+  100% { text-shadow: -3px 0 0 rgba(0,228,255,0.95),  3px 0 0 rgba(255,40,80,0.95); transform: translateX(-0.6px); }
+}
+@keyframes nav-glitch-box {
+  0%   { box-shadow: -3px 0 0 rgba(0,228,255,0.95), 3px 0 0 rgba(255,40,80,0.95); }
+  50%  { box-shadow: -5px 0 0 rgba(0,228,255,0.95), 5px 0 0 rgba(255,40,80,0.95); }
+  100% { box-shadow: -2px 0 0 rgba(0,228,255,0.95), 2px 0 0 rgba(255,40,80,0.95); }
+}
+@keyframes nav-scan-roll {
+  from { background-position: 0 0; }
+  to   { background-position: 0 6px; }
+}
+
+/* ── Link classes (mirrored from global.css) ─────────────────── */
+.t-text {
+  position: relative; text-decoration: none; color: inherit;
+}
+.t-text::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px; background: currentColor;
+  transform-origin: left; transform: scaleX(0);
+  transition: transform 220ms cubic-bezier(.55,.05,.2,1);
+}
+.t-text:hover::after { transform: scaleX(1); }
+
+.t-glitch {
+  display: inline-block; text-decoration: none; color: inherit;
+  transition: text-shadow 120ms ease, transform 120ms ease;
+}
+.t-glitch:hover { animation: t-glitch-anim 320ms steps(2, end) infinite; }
+
+/* ── Site components (mirrored from global.css) ─────────────── */
+.page { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.masthead { padding: 28px 0 0; display: flex; align-items: stretch; gap: 32px; }
+
+.plate {
+  position: relative;
+  background: var(--cream);
+  border: 1.5px solid var(--plate);
+  padding: 24px 30px 22px;
+  box-shadow: var(--shadow);
+  flex: 0 0 auto;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-3xs); line-height: 1.05;
+  color: var(--plate); letter-spacing: 0;
+  white-space: pre;
+}
+.wordmark .dot { color: var(--c-red); animation: blink 1.4s steps(2) infinite; }
+
+.meta-col {
+  flex: 1; padding-bottom: 6px;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; align-items: flex-start; gap: 8px;
+}
+.bio-name {
+  margin: 0;
+  font-size: var(--fs-lg);
+  font-weight: 800; text-transform: uppercase;
+  line-height: 1; color: var(--plate);
+  display: flex; align-items: baseline; gap: 10px;
+}
+.bio-name::after {
+  content: ''; display: inline-block;
+  width: 28px; height: 6px; background: var(--c-red);
+  transform: translateY(-4px);
+}
+.weblog-link { text-decoration: none; color: inherit; }
+.weblog-we { font-weight: 400; color: var(--dim); text-transform: none; }
+.bio-line { margin: 0; font-size: var(--fs-xs); line-height: 1.55; color: var(--ink); }
+
+.rule-strip { margin-top: 24px; height: 6px; display: flex; }
+.rule-strip > span { display: block; height: 100%; }
+.rule-strip > span:nth-child(1) { background: var(--c-red);    flex: 1; }
+.rule-strip > span:nth-child(2) { background: var(--c-cyan);   flex: 1; }
+.rule-strip > span:nth-child(3) { background: var(--c-yellow); flex: 1; }
+.rule-strip > span:nth-child(4) { background: var(--c-plum);   flex: 1; }
+.rule-strip > span:nth-child(5) { background: var(--c-green);  flex: 1; }
+.rule-strip > span:nth-child(6) { background: var(--plate);    flex: 6; }
+
+.nav-strip {
+  margin-top: 24px;
+  display: flex; width: fit-content; max-width: 100%;
+  align-items: stretch; flex-wrap: nowrap;
+  height: 52px;
+  background: var(--cream);
+  border: 1.5px solid var(--plate);
+  box-shadow: 4px 4px 0 0 var(--plate);
+}
+.nav-item {
+  flex: 0 1 130px; width: 130px; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--plate);
+  font-size: var(--fs-sm); letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 700; padding: 0 14px;
+  transition: box-shadow 120ms ease;
+}
+.nav-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(23,26,32,0) 0 2px,
+    rgba(23,26,32,0.22) 2px 3px
+  );
+  opacity: 0; transition: opacity 140ms ease; pointer-events: none;
+}
+.nav-item + .nav-item { border-left: 1.5px solid var(--plate); }
+.nav-item:hover    { animation: nav-glitch-box 320ms steps(2, end) infinite; z-index: 2; }
+.nav-item:hover::after { opacity: 1; animation: nav-scan-roll 600ms linear infinite; }
+.nav-item:active   { transform: translateY(1px); }
+.nav-item:nth-child(1) { background: var(--c-red); }
+.nav-item:nth-child(2) { background: var(--c-cyan); }
+.nav-item:nth-child(3) { background: var(--c-yellow); }
+.nav-item:nth-child(4) { background: var(--c-plum); }
+.nav-item:nth-child(5) { background: var(--c-green); }
+
+.pop-rule {
+  margin: 30px 0; display: flex; justify-content: flex-start;
+  align-items: stretch; height: 4px;
+}
+.pop-rule .seg { width: 28px; display: block; height: 100%; }
+.pop-rule .seg.a { background: var(--c-red); }
+.pop-rule .seg.b { background: var(--c-cyan); }
+.pop-rule .seg.c { background: var(--c-yellow); }
+.pop-rule .seg.d { background: var(--c-plum); }
+.pop-rule .seg.e { background: var(--c-green); }
+
+.post-date {
+  margin: 0 0 10px;
+  font-size: var(--fs-xs); letter-spacing: 1.8px; text-transform: uppercase;
+  color: var(--plate); font-weight: 700;
+}
+.post-date-updated { color: var(--dim); font-weight: 400; }
+
+.post-title {
+  margin: 0 0 16px;
+  font-family: "IBM Plex Sans", ui-sans-serif, sans-serif;
+  font-size: var(--fs-h1); font-weight: 700; letter-spacing: 0;
+  line-height: 1.1; color: var(--ink);
+}
+.post-title a { color: inherit; text-decoration: none; }
+.post-title a:hover { text-decoration: underline; }
+
+.post-body { font-size: var(--fs-base); line-height: 1.78; max-width: 74ch; }
+.post-body p { margin: 0 0 12px; text-wrap: pretty; }
+.post-body p:last-child { margin-bottom: 0; }
+.post-summary { font-family: "IBM Plex Serif", Georgia, serif; }
+
+.prose {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: var(--fs-base); line-height: 1.78; max-width: 74ch;
+  padding-bottom: 24px;
+}
+.prose p { margin: 0 0 16px; text-wrap: pretty; }
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: "IBM Plex Sans", ui-sans-serif, sans-serif;
+  font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0; line-height: 1.1; color: var(--ink);
+  margin: 2em 0 0.6em;
+}
+.prose h1 { font-size: var(--fs-h1); }
+.prose h2 { font-size: var(--fs-h2); }
+.prose h3 { font-size: var(--fs-lg); }
+.prose a { color: inherit; }
+.prose strong, .prose b { font-weight: 700; }
+.prose em, .prose i { font-style: italic; }
+.prose code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9em;
+  background: var(--plate); color: var(--cream);
+  padding: 2px 6px;
+}
+.prose pre {
+  background: var(--plate); color: var(--cream);
+  padding: 20px 22px;
+  border: 1.5px solid var(--plate);
+  box-shadow: 6px 6px 0 0 var(--c-red);
+  overflow-x: auto; margin: 0 0 20px;
+  font-size: var(--fs-md); line-height: 1.6;
+}
+.prose pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+.prose blockquote {
+  border-left: 3px solid var(--c-red);
+  margin: 0 0 16px; padding: 0 0 0 20px;
+  color: var(--dim);
+}
+.prose ul, .prose ol { margin: 0 0 16px; padding-left: 22px; }
+.prose li { margin-bottom: 6px; }
+.prose hr { border: none; border-top: 1px solid var(--hair); margin: 28px 0; }
+.prose img {
+  max-width: 70%; height: auto;
+  border: 1.5px solid var(--plate);
+  box-shadow: 6px 6px 0 0 var(--plate);
+  margin: 0 auto; display: block;
+}
+.prose figure { margin: 0 auto 20px; display: table; }
+.prose figcaption {
+  display: table-caption; caption-side: bottom; margin-top: 8px;
+  font-size: var(--fs-xs); color: var(--dim); text-align: center;
+}
+
+/* Footnote reference (superscript) */
+.prose sup a { color: var(--c-red); text-decoration: none; }
+
+/* Footnotes block */
+.prose .footnotes {
+  margin-top: 48px;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: var(--fs-xs);
+}
+.prose .footnotes .footnote-label {
+  display: block;
+  color: var(--c-red);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-2xs);
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+.prose .footnotes .footnote-label::before { content: "// "; }
+.prose .footnotes ol {
+  margin: 0; padding: 0; list-style: none; counter-reset: fn;
+}
+.prose .footnotes li {
+  counter-increment: fn;
+  display: flex; align-items: flex-start;
+  padding: 0.3rem 0; gap: 0.1rem; margin: 0;
+}
+.prose .footnotes li::before {
+  content: counter(fn);
+  flex: 0 0 auto; color: var(--c-red);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--fs-3xs); font-weight: 800;
+  line-height: 1; margin-top: 0.2em;
+}
+.prose .footnotes p { margin: 0; line-height: 1.65; }
+
+/* Site footer */
+.site-footer {
+  border-top: 1.5px solid var(--plate);
+  padding: 18px 0 32px;
+  font-size: var(--fs-xs); letter-spacing: 1.2px;
+  color: var(--dim);
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.site-footer a { color: inherit; text-decoration: none; }
+.site-footer a:hover { color: var(--ink); }
+
+/* Library tag */
+.lib-tag {
+  display: inline-block;
+  font-size: var(--fs-2xs); letter-spacing: 1.5px; text-transform: uppercase;
+  font-weight: 700; color: var(--plate);
+  padding: 2px 7px; border: 1.5px solid var(--plate);
+  white-space: nowrap;
+}
+.lib-tag-blog    { background: rgba(0,194,255,0.15); }
+.lib-tag-video   { background: rgba(255,93,58,0.15); }
+.lib-tag-podcast { background: rgba(255,214,10,0.28); }
+.lib-tag-other   { background: rgba(255,45,117,0.15); }
+.lib-tag-reading { background: var(--c-green); color: var(--plate); }
+
+/* Library book cover */
+.lib-cover {
+  width: 56px; display: block;
+  border: 1.5px solid var(--plate);
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--c-red);
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .masthead  { flex-direction: column; gap: 16px; padding-top: 28px; }
+  .meta-col  { padding: 0; gap: 10px; }
+  .plate     { box-shadow: 6px 6px 0 0 var(--c-red); padding: 16px 18px 14px; }
+  .wordmark  { font-size: calc(var(--fs-base) * 8 / 14); }
+  .nav-strip {
+    height: auto; width: 100%; flex-wrap: wrap;
+    padding: 0; border: none; box-shadow: 3px 3px 0 0 var(--plate);
+  }
+  .nav-item {
+    flex: 1 1 110px; width: auto; padding: 14px 10px;
+    font-size: var(--fs-xs); letter-spacing: 1.6px;
+    border: 1.5px solid var(--plate); margin: -0.75px 0 0 -0.75px;
+  }
+  .nav-item + .nav-item { border-left: 1.5px solid var(--plate); }
+  .prose img { max-width: 100%; }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   GUIDELINES DOC CHROME
+   These styles are only for the guidelines document itself,
+   not part of the site design system.
+──────────────────────────────────────────────────────────────── */
+.doc-wrap  { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter) 80px; }
+
+.doc-bar {
+  background: var(--plate); color: var(--cream);
+  margin-top: 22px; padding: 11px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; flex-wrap: wrap;
+  font-size: var(--fs-xs); letter-spacing: 1.4px; text-transform: uppercase;
+}
+.doc-bar .live {
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.doc-bar .live::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--c-red); animation: pulse 1.6s ease-in-out infinite;
+}
+.doc-bar .dim { opacity: 0.65; }
+
+.doc-masthead {
+  padding: 28px 0 0;
+  display: flex; align-items: stretch; gap: 32px;
+}
+.doc-title-col {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: flex-end; gap: 10px; padding-bottom: 6px;
+}
+.doc-title-col h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800; text-transform: uppercase; line-height: 1.05;
+}
+.doc-title-col .crumbs {
+  font-size: var(--fs-xs); letter-spacing: 1.6px;
+  text-transform: uppercase; color: var(--dim);
+}
+.doc-title-col .crumbs em { font-style: normal; color: var(--ink); }
+
+/* Section structure */
+.sec { padding: 48px 0 0; }
+.sec + .sec { padding-top: 36px; }
+.sec:last-child { padding-bottom: 40px; }
+
+.sec-head {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.sec-num {
+  background: var(--c-red); color: var(--plate);
+  border: 1.5px solid var(--plate);
+  box-shadow: 3px 3px 0 0 var(--plate);
+  padding: 4px 10px; font-weight: 700;
+  letter-spacing: 2px; font-size: var(--fs-xs);
+}
+/* Cycle accent colors through section numbers */
+.sec:nth-of-type(2) .sec-num { background: var(--c-cyan); }
+.sec:nth-of-type(3) .sec-num { background: var(--c-yellow); }
+.sec:nth-of-type(4) .sec-num { background: var(--c-plum); color: var(--cream); }
+.sec:nth-of-type(5) .sec-num { background: var(--c-green); }
+.sec:nth-of-type(6) .sec-num { background: var(--plate);  color: var(--cream); }
+.sec:nth-of-type(7) .sec-num { background: var(--c-red); }
+.sec:nth-of-type(8) .sec-num { background: var(--c-cyan); }
+.sec:nth-of-type(9) .sec-num { background: var(--c-yellow); }
+.sec:nth-of-type(10) .sec-num { background: var(--c-plum); color: var(--cream); }
+
+.sec-title {
+  margin: 0;
+  font-size: clamp(20px, 3.6vw, 28px); font-weight: 800;
+  text-transform: uppercase; line-height: 1.1;
+}
+.sec-sub {
+  color: var(--dim); font-size: var(--fs-xs);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.sec-body { font-size: var(--fs-md); line-height: 1.78; max-width: 78ch; }
+.sec-body p { margin: 0 0 12px; }
+.sec-body p:last-child { margin-bottom: 0; }
+
+/* Hairline rule between sections */
+.sec-divider {
+  margin: 40px 0 0;
+  border: none; border-top: 1px solid var(--hair);
+}
+
+/* Live-demo stage */
+.demo {
+  margin-top: 22px;
+  border: 1.5px solid var(--plate);
+  background: var(--cream);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-plate);
+  display: flex; align-items: flex-start; flex-wrap: wrap; gap: 24px;
+}
+.demo.demo-full   { padding: 0; overflow: hidden; }
+.demo.demo-dark   { background: var(--plate); }
+.demo.demo-center { justify-content: center; }
+.demo.demo-col    { flex-direction: column; }
+
+.demo-label {
+  margin-top: 10px;
+  font-size: var(--fs-2xs); letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--dim);
+}
+.demo-label strong { color: var(--plate); display: block; margin-bottom: 2px; }
+
+/* Card used in component grids */
+.comp-card {
+  flex: 1 1 240px;
+  border: 1.5px solid var(--hair);
+  padding: 20px 16px 14px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.comp-stage {
+  flex: 1; display: flex; align-items: center; justify-content: flex-start;
+  padding: 8px 0;
+}
+.comp-stage.center { justify-content: center; }
+.comp-card .comp-label {
+  margin-top: auto;
+  font-size: var(--fs-2xs); letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--dim); border-top: 1px solid var(--hair); padding-top: 8px;
+}
+.comp-card .comp-label strong { display: block; color: var(--plate); }
+
+/* Color swatches */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px; margin-top: 20px;
+}
+.swatch {
+  border: 1.5px solid var(--plate);
+  background: var(--cream);
+  box-shadow: 4px 4px 0 0 var(--plate);
+}
+.swatch .chip {
+  height: 80px; border-bottom: 1.5px solid var(--plate);
+  display: flex; align-items: flex-end; padding: 8px 10px;
+  font-size: var(--fs-3xs); letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--plate);
+}
+.swatch .chip.light-txt { color: var(--cream); }
+.swatch .swatch-info { padding: 8px 10px 10px; }
+.swatch .swatch-name { font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: var(--fs-2xs); display: block; }
+.swatch .swatch-hex  { color: var(--dim); font-size: var(--fs-2xs); display: block; margin-top: 2px; }
+.swatch .swatch-var  { color: var(--dim); font-size: var(--fs-3xs); display: block; }
+
+/* Type scale table */
+.type-table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+.type-table th, .type-table td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid var(--hair);
+  font-size: var(--fs-xs);
+  vertical-align: baseline;
+}
+.type-table th {
+  font-size: var(--fs-3xs); letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--dim); font-weight: 700;
+}
+.type-table td:first-child { white-space: nowrap; color: var(--c-red); font-weight: 700; }
+.type-table td:last-child  { color: var(--dim); font-size: var(--fs-3xs); }
+
+/* Type specimens */
+.type-row {
+  display: grid; grid-template-columns: 130px 1fr;
+  align-items: baseline; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--hair);
+}
+.type-row .tr-label {
+  font-size: var(--fs-3xs); letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--dim); line-height: 1.6;
+}
+.type-row .tr-label strong { display: block; color: var(--plate); font-size: var(--fs-2xs); margin-bottom: 4px; }
+
+/* Do / don't */
+.do-dont {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;
+}
+.do-dont .col {
+  border: 1.5px solid var(--plate);
+  background: var(--cream); padding: 16px;
+}
+.do-dont .col h4 {
+  margin: 0 0 10px;
+  font-size: var(--fs-xs); letter-spacing: 2px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.do-dont .col h4::before {
+  content: ''; width: 10px; height: 10px; display: inline-block; flex-shrink: 0;
+}
+.do-dont .do h4::before   { background: var(--c-green); }
+.do-dont .dont h4::before { background: var(--c-plum); }
+.do-dont ul { margin: 0; padding-left: 18px; font-size: var(--fs-sm); line-height: 1.7; }
+.do-dont li + li { margin-top: 6px; }
+
+/* Code block in guidelines */
+.token-block {
+  background: var(--plate); color: var(--cream);
+  padding: 18px 20px;
+  border: 1.5px solid var(--plate);
+  box-shadow: 6px 6px 0 0 var(--c-red);
+  font-size: var(--fs-sm); line-height: 1.6;
+  overflow-x: auto; margin-top: 16px;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Inline code in descriptions */
+code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.88em;
+  background: var(--plate); color: var(--cream);
+  padding: 1px 5px;
+}
+
+/* Responsive adjustments for this doc */
+@media (max-width: 720px) {
+  .doc-masthead  { flex-direction: column; gap: 16px; }
+  .type-row      { grid-template-columns: 1fr; gap: 6px; }
+  .do-dont       { grid-template-columns: 1fr; }
+  .swatch-grid   { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+</style>
+</head>
+<body>
+
+<div class="doc-wrap">
+
+  <!-- ── DOC HEADER BAR ──────────────────────────────────────── -->
+  <div class="doc-bar">
+    <span class="live">ONEB · UI DESIGN GUIDELINES</span>
+    <span class="dim">SOURCE OF TRUTH: src/styles/global.css</span>
+    <span class="dim">REV 2026-06-16</span>
+  </div>
+
+  <!-- ── MASTHEAD (live demo of the actual site header) ─────── -->
+  <header class="doc-masthead">
+    <div class="plate">
+      <a href="#" class="t-glitch" aria-label="ONEB">
+<pre class="wordmark">  ████████  ██     ██  ████████  ██████
+ ██      ██ ███    ██ ██        ██    ██
+ ██      ██ ██ ██  ██ ██████    ██████
+ ██      ██ ██  ██ ██ ██        ██    ██
+ ██      ██ ██   ████ ██        ██    ██
+  ████████  ██    ███  ████████ ██████<span class="dot">  ●</span></pre>
+      </a>
+    </div>
+    <div class="doc-title-col">
+      <div class="crumbs">ONEB &nbsp;/&nbsp; <em>UI DESIGN GUIDELINES</em></div>
+      <h1>Design system,<br>documented.</h1>
+    </div>
+  </header>
+
+  <!-- 5-color rule strip (same as on every page) -->
+  <div class="rule-strip" style="margin-bottom: 0;">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       01 — COLOR PALETTE
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 001</span>
+      <h2 class="sec-title">Color palette</h2>
+      <span class="sec-sub">· 5 CRT accents + ink + paper</span>
+    </div>
+    <div class="sec-body">
+      <p>Five screen-lit accents on a near-white paper ground (<code>#fafaf5</code>) with deep ink black for all structural elements. Each accent has a fixed positional role in the nav strip and the pop-rule divider — they read as a set, not interchangeably. Never combine two accents as foreground/background pairs. Accents always appear on cream or ink.</p>
+      <p>Selection highlight: <code>background: var(--c-red); color: var(--cream)</code>.</p>
+    </div>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="chip" style="background:#ff5d3a;">ACCENT 01</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Amber Flare</span>
+          <span class="swatch-hex">#FF5D3A</span>
+          <span class="swatch-var">--c-red · nav-1 · plate shadow · hover · selection</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00c2ff;">ACCENT 02</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Ice Cyan</span>
+          <span class="swatch-hex">#00C2FF</span>
+          <span class="swatch-var">--c-cyan · nav-2 · glitch left channel</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#ffd60a;">ACCENT 03</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Hot Yellow</span>
+          <span class="swatch-hex">#FFD60A</span>
+          <span class="swatch-var">--c-yellow · nav-3</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip light-txt" style="background:#ff2d75;">ACCENT 04</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Magenta Pulse</span>
+          <span class="swatch-hex">#FF2D75</span>
+          <span class="swatch-var">--c-plum · nav-4 · rule seg · don't marker</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip light-txt" style="background:#00d97e;">ACCENT 05</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Phosphor Green</span>
+          <span class="swatch-hex">#00D97E</span>
+          <span class="swatch-var">--c-green · nav-5 · do marker · reading tag</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip light-txt" style="background:#171a20;">INK</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Ink Black</span>
+          <span class="swatch-hex">#171A20</span>
+          <span class="swatch-var">--ink · --plate · borders · nav shadow</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#fafaf5; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);">PAPER</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Paper Cream</span>
+          <span class="swatch-hex">#FAFAF5</span>
+          <span class="swatch-var">--bg · --cream · all surface fills</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:rgba(23,26,32,0.16); box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);">HAIRLINE</div>
+        <div class="swatch-info">
+          <span class="swatch-name">Hairline</span>
+          <span class="swatch-hex">rgba(23,26,32,0.16)</span>
+          <span class="swatch-var">--hair · prose dividers · subtle borders</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       02 — TYPOGRAPHY
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 002</span>
+      <h2 class="sec-title">Typography</h2>
+      <span class="sec-sub">· three IBM Plex faces, one type scale</span>
+    </div>
+    <div class="sec-body">
+      <p>The site uses three members of the IBM Plex family, each with a distinct job. Never introduce a fourth typeface. The type scale is defined as CSS custom properties derived from <code>--fs-base: 1rem</code> — all sizes scale together if the base changes.</p>
+    </div>
+
+    <!-- Three faces -->
+    <div class="demo demo-col" style="margin-top: 22px; padding: 24px;">
+      <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700; background:var(--c-red); padding: 3px 8px; border: 1.5px solid var(--plate);">IBM Plex Mono</span>
+        <span style="font-family:'IBM Plex Sans',sans-serif; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700; background:var(--c-cyan); padding: 3px 8px; border: 1.5px solid var(--plate);">IBM Plex Sans</span>
+        <span style="font-family:'IBM Plex Serif',serif; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700; background:var(--c-yellow); padding: 3px 8px; border: 1.5px solid var(--plate);">IBM Plex Serif</span>
+      </div>
+      <table style="width:100%; border-collapse:collapse; font-size:var(--fs-sm);">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:8px 10px; border-bottom:1px solid var(--plate); font-size:var(--fs-3xs); letter-spacing:1.5px; text-transform:uppercase; color:var(--dim);">Face</th>
+            <th style="text-align:left; padding:8px 10px; border-bottom:1px solid var(--plate); font-size:var(--fs-3xs); letter-spacing:1.5px; text-transform:uppercase; color:var(--dim);">Used for</th>
+            <th style="text-align:left; padding:8px 10px; border-bottom:1px solid var(--plate); font-size:var(--fs-3xs); letter-spacing:1.5px; text-transform:uppercase; color:var(--dim);">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 10px; border-bottom:1px solid var(--hair); white-space:nowrap; font-weight:700; font-family:'IBM Plex Mono',monospace;">IBM Plex Mono</td>
+            <td style="padding:10px 10px; border-bottom:1px solid var(--hair); color:var(--dim);">Site chrome — wordmark, nav, dates, labels, meta, code, all UI text</td>
+            <td style="padding:10px 10px; border-bottom:1px solid var(--hair); font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); letter-spacing:1.8px; text-transform:uppercase; font-weight:700;">2024 · 03 · 14</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 10px; border-bottom:1px solid var(--hair); white-space:nowrap; font-weight:700; font-family:'IBM Plex Sans',sans-serif;">IBM Plex Sans</td>
+            <td style="padding:10px 10px; border-bottom:1px solid var(--hair); color:var(--dim);">Post titles on the feed; headings (h1–h3) inside prose articles</td>
+            <td style="padding:10px 10px; border-bottom:1px solid var(--hair); font-family:'IBM Plex Sans',sans-serif; font-size:var(--fs-sm); font-weight:700; text-transform:uppercase;">The Case for Small Websites</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 10px; white-space:nowrap; font-weight:700; font-family:'IBM Plex Serif',serif;">IBM Plex Serif</td>
+            <td style="padding:10px 10px; color:var(--dim);">Article body (prose), post summaries on the feed</td>
+            <td style="padding:10px 10px; font-family:'IBM Plex Serif',serif; font-size:var(--fs-sm);">There is a particular pleasure in noticing a number flip over.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Type scale table -->
+    <h3 style="margin: 32px 0 0; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700;">Type scale</h3>
+    <table class="type-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Formula</th>
+          <th>Approx. px</th>
+          <th>Typical use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>--fs-3xs</td><td>base × 9/14</td><td>~10px</td><td>Wordmark (ASCII art), footnote counters, tiny caps</td></tr>
+        <tr><td>--fs-2xs</td><td>base × 10/14</td><td>~11px</td><td>Swatch labels, library genre tags, footnote text</td></tr>
+        <tr><td>--fs-xs</td><td>base × 11/14</td><td>~13px</td><td>Post dates, bio line, nav items (mobile), meta labels</td></tr>
+        <tr><td>--fs-sm</td><td>base × 12/14</td><td>~14px</td><td>Nav items (desktop), footer, library titles</td></tr>
+        <tr><td>--fs-md</td><td>base × 13/14</td><td>~15px</td><td>Prose code blocks; general secondary text</td></tr>
+        <tr><td>--fs-base</td><td>1rem (16px)</td><td>16px</td><td>Post body, prose body, primary reading size</td></tr>
+        <tr><td>--fs-lg</td><td>base × 20/14</td><td>~23px</td><td>Bio name (masthead); h3 inside prose</td></tr>
+        <tr><td>--fs-h2</td><td>clamp(~23px, vw, ~32px)</td><td>23–32px</td><td>h2 inside prose articles</td></tr>
+        <tr><td>--fs-h1</td><td>clamp(~30px, vw, ~41px)</td><td>30–41px</td><td>Post titles on feed; h1 inside prose articles</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Type specimens -->
+    <h3 style="margin: 32px 0 14px; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700;">Specimens</h3>
+
+    <div class="type-row">
+      <div class="tr-label">
+        <strong>POST TITLE</strong>
+        IBM Plex Sans<br>700 · sentence case<br>--fs-h1 · 1.1 lh
+      </div>
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:var(--fs-h1); font-weight:700; line-height:1.1;">The Case for Single-Purpose Websites</div>
+    </div>
+
+    <div class="type-row">
+      <div class="tr-label">
+        <strong>PROSE H2</strong>
+        IBM Plex Sans<br>800 · UPPERCASE<br>--fs-h2 · 1.1 lh
+      </div>
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:var(--fs-h2); font-weight:800; text-transform:uppercase; line-height:1.1;">The Background</div>
+    </div>
+
+    <div class="type-row">
+      <div class="tr-label">
+        <strong>BIO NAME</strong>
+        IBM Plex Mono<br>800 · UPPERCASE<br>--fs-lg · 1.0 lh
+      </div>
+      <div style="font-size:var(--fs-lg); font-weight:800; text-transform:uppercase; line-height:1; display:flex; align-items:baseline; gap:10px;">Elmer<span style="display:inline-block; width:28px; height:6px; background:var(--c-red); transform:translateY(-4px);"></span></div>
+    </div>
+
+    <div class="type-row">
+      <div class="tr-label">
+        <strong>PROSE BODY</strong>
+        IBM Plex Serif<br>400 · sentence case<br>--fs-base · 1.78 lh<br>74ch max-width
+      </div>
+      <div style="font-family:'IBM Plex Serif',serif; font-size:var(--fs-base); line-height:1.78; max-width:60ch;">There is a particular pleasure in noticing a number flip over that means nothing to anyone else. The odometer on the way to work. A photo timestamped one year to the minute from another. Your one-billionth second.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="tr-label">
+        <strong>DATE / LABEL</strong>
+        IBM Plex Mono<br>700 · UPPERCASE<br>--fs-xs · tracking 1.8px
+      </div>
+      <div style="font-size:var(--fs-xs); letter-spacing:1.8px; text-transform:uppercase; font-weight:700;">2024 · 03 · 14</div>
+    </div>
+
+    <div class="type-row">
+      <div class="tr-label">
+        <strong>NAV / BADGE</strong>
+        IBM Plex Mono<br>700 · UPPERCASE<br>--fs-sm · tracking 2.5px
+      </div>
+      <div style="font-size:var(--fs-sm); letter-spacing:2.5px; text-transform:uppercase; font-weight:700;">HOME · ABOUT · ARCHIVES</div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       03 — LAYOUT
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 003</span>
+      <h2 class="sec-title">Layout</h2>
+      <span class="sec-sub">· one column, fluid gutter</span>
+    </div>
+    <div class="sec-body">
+      <p>All pages use a single centered column. The page container (<code>.page</code>) caps at <code>--content-max: 760px</code> with a fluid horizontal gutter of <code>clamp(20px, 5vw, 56px)</code>. There are no multi-column page layouts — only internal component grids (library books, media) use multi-column grid. Prose and post feeds are strictly single-column.</p>
+    </div>
+
+    <div class="demo demo-col" style="margin-top: 22px; padding: 24px 24px 16px;">
+      <div style="position:relative; border: 1.5px dashed var(--hair); padding: 12px; font-size:var(--fs-xs); letter-spacing:1px; text-transform:uppercase; color:var(--dim);">
+        <span style="position:absolute; top:-10px; left:10px; background:var(--cream); padding:0 6px; font-size:var(--fs-3xs); color:var(--c-red); font-weight:700;">VIEWPORT</span>
+        <div style="max-width:760px; margin:0 auto; border:1.5px solid var(--plate); padding:12px; position:relative; background:rgba(255,93,58,0.06);">
+          <span style="position:absolute; top:-10px; left:10px; background:var(--cream); padding:0 6px; font-size:var(--fs-3xs); color:var(--plate); font-weight:700;">.page · max 760px</span>
+          <div style="padding: 0 clamp(20px,5vw,56px);">
+            <div style="background:rgba(255,93,58,0.12); padding:10px; text-align:center;">content goes here</div>
+          </div>
+          <div style="font-size:var(--fs-3xs); margin-top:8px; text-align:center; color:var(--dim);">←— gutter: clamp(20px, 5vw, 56px) —→</div>
+        </div>
+      </div>
+      <div class="demo-label">
+        <strong>LAYOUT CONSTANTS</strong>
+        <code>--content-max: 760px</code> &nbsp;·&nbsp;
+        <code>--gutter: clamp(20px, 5vw, 56px)</code> &nbsp;·&nbsp;
+        Mobile breakpoint: <code>720px</code>
+      </div>
+    </div>
+
+    <div class="sec-body" style="margin-top:20px;">
+      <p><strong>Breakpoint: 720px.</strong> Below this width the masthead stacks vertically, nav items wrap into a grid, and the wordmark scales down to preserve the ASCII art proportions.</p>
+      <p><strong>Prose and post body:</strong> capped at <code>74ch</code> inside the already-narrow column — prioritizes readable line length over filling the container.</p>
+      <p><strong>Images in prose:</strong> default to <code>max-width: 70%</code> centered, expanding to <code>max-width: 100%</code> on mobile.</p>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       04 — SITE CHROME
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 004</span>
+      <h2 class="sec-title">Site chrome</h2>
+      <span class="sec-sub">· masthead, nav, rule strip</span>
+    </div>
+    <div class="sec-body">
+      <p>The chrome is the structural frame rendered on every page. It consists of three stacked elements: the masthead (wordmark plate + bio), the nav strip, and the 5-color rule strip. Everything below the rule strip is page-specific content.</p>
+    </div>
+
+    <!-- Live masthead demo -->
+    <div class="demo demo-full" style="padding: 0; margin-top: 22px;">
+      <div style="padding: 0 24px;">
+        <header class="masthead" style="padding-top: 24px;">
+          <div class="plate">
+            <a href="#" class="t-glitch" aria-label="ONEB" style="color:var(--plate);">
+<pre class="wordmark">  ████████  ██     ██  ████████  ██████
+ ██      ██ ███    ██ ██        ██    ██
+ ██      ██ ██ ██  ██ ██████    ██████
+ ██      ██ ██  ██ ██ ██        ██    ██
+ ██      ██ ██   ████ ██        ██    ██
+  ████████  ██    ███  ████████ ██████<span class="dot">  ●</span></pre>
+            </a>
+          </div>
+          <div class="meta-col">
+            <p class="bio-name">Elmer's <span class="weblog-we">we</span>blog</p>
+            <p class="bio-line">&ldquo;Look ma, no javascript!&rdquo;</p>
+          </div>
+        </header>
+        <nav class="nav-strip" aria-label="Primary navigation" style="margin-bottom:24px;">
+          <a href="#" class="nav-item">Home</a>
+          <a href="#" class="nav-item">About</a>
+          <a href="#" class="nav-item">Archives</a>
+          <a href="#" class="nav-item">RSS</a>
+          <a href="#" class="nav-item">Library</a>
+        </nav>
+        <div class="rule-strip" style="margin-top:0; margin-bottom:0;"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="demo-label" style="margin-bottom: 28px;">
+      <strong>LIVE CHROME</strong>
+      Masthead · Nav strip · Rule strip — rendered exactly as on site
+    </div>
+
+    <!-- Component breakdown -->
+    <h3 style="margin: 28px 0 14px; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700;">Component breakdown</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:14px;">
+
+      <div class="comp-card">
+        <div class="comp-stage center">
+          <div class="plate" style="box-shadow: 6px 6px 0 0 var(--c-red); padding:12px 16px;">
+            <pre class="wordmark" style="font-size:calc(var(--fs-base) * 6/14);">  ████████  ██     ██  ████████  ██████
+ ██      ██ ███    ██ ██        ██    ██
+ ██      ██ ██ ██  ██ ██████    ██████
+  ████████  ██    ███  ████████ ██████<span class="dot">  ●</span></pre>
+          </div>
+        </div>
+        <div class="comp-label">
+          <strong>WORDMARK PLATE</strong>
+          ASCII art · IBM Plex Mono · --fs-3xs · cream fill · 1.5px ink border · 8px red shadow
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-stage">
+          <div>
+            <p class="bio-name" style="font-size:calc(var(--fs-base)*18/14);">Elmer's <span class="weblog-we">we</span>blog</p>
+            <p class="bio-line">&ldquo;Look ma, no javascript!&rdquo;</p>
+          </div>
+        </div>
+        <div class="comp-label">
+          <strong>BIO BLOCK</strong>
+          Name (Mono 800 CAPS) + red accent bar · tagline (Mono 400, --fs-xs)
+        </div>
+      </div>
+
+      <div class="comp-card" style="flex-basis:100%;">
+        <div class="comp-stage center">
+          <nav class="nav-strip" style="margin:0; width:auto;">
+            <a href="#" class="nav-item">Home</a>
+            <a href="#" class="nav-item">About</a>
+            <a href="#" class="nav-item">Archives</a>
+            <a href="#" class="nav-item">RSS</a>
+            <a href="#" class="nav-item">Library</a>
+          </nav>
+        </div>
+        <div class="comp-label">
+          <strong>NAV STRIP</strong>
+          5 colored tiles · colors assigned by <code>:nth-child()</code> order (red, cyan, yellow, plum, green) · 1.5px ink frame · 4px ink shadow · glitch + scan-line hover · 52px tall (desktop)
+        </div>
+      </div>
+
+      <div class="comp-card" style="flex-basis:100%;">
+        <div class="comp-stage" style="flex-direction:column; align-items:stretch; gap:8px; padding:4px 0;">
+          <div class="rule-strip" style="margin:0;"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div style="font-size:var(--fs-3xs); letter-spacing:1.5px; text-transform:uppercase; color:var(--dim); display:flex; justify-content:space-between;">
+            <span>← red · cyan · yellow · plum · green (flex:1 each)</span>
+            <span>ink (flex:6) →</span>
+          </div>
+        </div>
+        <div class="comp-label">
+          <strong>RULE STRIP</strong>
+          5 accent segments (flex:1 each) + ink tail (flex:6) · 6px tall · sits below nav, above page content
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       05 — POST FEED
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 005</span>
+      <h2 class="sec-title">Post feed</h2>
+      <span class="sec-sub">· list of posts on the home/archives page</span>
+    </div>
+    <div class="sec-body">
+      <p>Posts on the feed are simple vertical stacks: date → title → summary excerpt. No left borders, no numbered chips, no background fills. Each post is separated by a 5-segment pop-rule divider. Post titles use IBM Plex Sans (not mono) — one of the most important distinctions from earlier designs.</p>
+    </div>
+
+    <!-- Live feed demo -->
+    <div class="demo demo-full" style="margin-top: 22px;">
+      <div style="padding: 20px 24px 4px;">
+        <article>
+          <div class="post-date">2024 · 03 · 14</div>
+          <h2 class="post-title"><a href="#" class="t-text">The Case for Single-Purpose Websites</a></h2>
+          <div class="post-body">
+            <p class="post-summary">I have a soft spot for websites that do exactly one thing. The pages that solve precisely the problem in their URL and then stop. They are not platforms. They are not products.</p>
+          </div>
+        </article>
+        <div class="pop-rule">
+          <span class="seg a"></span><span class="seg b"></span><span class="seg c"></span><span class="seg d"></span><span class="seg e"></span>
+        </div>
+        <article>
+          <div class="post-date">2024 · 01 · 18 &nbsp;<span class="post-date-updated">· updated 2024 · 06 · 02</span></div>
+          <h2 class="post-title"><a href="#" class="t-text">Ten Years of One Domain</a></h2>
+          <div class="post-body">
+            <p class="post-summary">I have owned this domain for ten years. For a long time it was a single HTML file with a placeholder and nothing else.</p>
+          </div>
+        </article>
+        <div style="height: 16px;"></div>
+      </div>
+    </div>
+    <div class="demo-label" style="margin-bottom:28px;">
+      <strong>LIVE POST FEED</strong>
+      Two posts separated by a pop-rule divider · second entry shows an updated date
+    </div>
+
+    <!-- Component notes -->
+    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:8px;">
+      <div class="comp-card">
+        <div class="comp-stage">
+          <div class="post-date">2024 · 03 · 14</div>
+        </div>
+        <div class="comp-label">
+          <strong>DATE ROW</strong>
+          IBM Plex Mono · --fs-xs · 700 · UPPERCASE · 1.8px tracking · ink color · <code>.post-date</code>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-stage">
+          <div class="post-date">2024 · 01 · 18 &nbsp;<span class="post-date-updated">· updated 2024 · 06</span></div>
+        </div>
+        <div class="comp-label">
+          <strong>UPDATED DATE</strong>
+          Appended to date · <code>.post-date-updated</code> · weight 400 · <code>var(--dim)</code>
+        </div>
+      </div>
+      <div class="comp-card" style="flex-basis:100%;">
+        <div class="comp-stage">
+          <h2 class="post-title" style="font-size:var(--fs-h2); margin:0;"><a href="#">Ten Years of One Domain</a></h2>
+        </div>
+        <div class="comp-label">
+          <strong>POST TITLE</strong>
+          IBM Plex <em>Sans</em> · --fs-h1 · 700 · sentence case · ink color · underline on hover · <code>.post-title</code>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-stage center">
+          <div class="pop-rule" style="margin:0; width:160px;">
+            <span class="seg a"></span><span class="seg b"></span><span class="seg c"></span><span class="seg d"></span><span class="seg e"></span>
+          </div>
+        </div>
+        <div class="comp-label">
+          <strong>POP-RULE DIVIDER</strong>
+          5 segments · 28px wide each · 4px tall · left-aligned · between every pair of posts
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       06 — PROSE (article body)
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 006</span>
+      <h2 class="sec-title">Prose</h2>
+      <span class="sec-sub">· article body rendered inside .prose</span>
+    </div>
+    <div class="sec-body">
+      <p>Full blog post content renders inside <code>.prose</code>. The body face is IBM Plex Serif; headings inside prose switch to IBM Plex Sans (800, uppercase). All inline code is IBM Plex Mono on an ink background. Block code gets the same ink background plus a red hard-offset shadow. Blockquotes use a 3px red left border.</p>
+    </div>
+
+    <div class="demo demo-full" style="margin-top: 22px;">
+      <div class="prose" style="padding: 24px; max-width: none;">
+        <p>There is a particular pleasure in noticing a number flip over that means nothing to anyone else. The odometer on the way to work. A photo timestamped one year to the minute from another. Your one-billionth second.</p>
+
+        <h2>The background</h2>
+
+        <p>A long time ago I watched a video by Neil deGrasse Tyson about how long one billion seconds is. The calculation is simple: one billion seconds is roughly 31.7 years. The video stayed with me for some reason.</p>
+
+        <blockquote>
+          <p>The best software is the kind you stop noticing. You use it, it works, and then you think about something else.</p>
+        </blockquote>
+
+        <p>Inline code looks like this: <code>const billion = 1_000_000_000</code>. Block code gets the full treatment:</p>
+
+<pre><code>// seconds since epoch
+const age = (Date.now() / 1000) - birthEpoch;
+const isBillion = age >= 1_000_000_000;</code></pre>
+
+        <ul>
+          <li>One input, one number, one idea.</li>
+          <li>No tracking, no newsletter, no roadmap.</li>
+          <li>Just a small thing in the world.<sup><a href="#fn1">1</a></sup></li>
+        </ul>
+
+        <div class="footnotes">
+          <span class="footnote-label">footnotes</span>
+          <ol>
+            <li id="fn1">
+              <p>The footnote number renders in red mono; the text in IBM Plex Sans at --fs-xs.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prose component notes -->
+    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:22px;">
+      <div class="comp-card">
+        <div class="comp-stage">
+          <blockquote style="border-left:3px solid var(--c-red); padding-left:16px; color:var(--dim); font-family:'IBM Plex Serif',serif; margin:0; max-width:28ch;">
+            <p style="margin:0;">The best software is the kind you stop noticing.</p>
+          </blockquote>
+        </div>
+        <div class="comp-label">
+          <strong>BLOCKQUOTE</strong>
+          3px left border in --c-red · no background · --dim color · Serif italic
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-stage center" style="flex-direction:column; align-items:flex-start; gap:8px;">
+          <code style="background:var(--plate);color:var(--cream);padding:2px 6px;font-size:0.9em;">inline code</code>
+          <pre style="background:var(--plate);color:var(--cream);padding:12px 14px;border:1.5px solid var(--plate);box-shadow:4px 4px 0 0 var(--c-red);margin:0;font-size:var(--fs-sm);"><code>block code</code></pre>
+        </div>
+        <div class="comp-label">
+          <strong>CODE</strong>
+          Both: IBM Plex Mono · ink bg · cream text<br>
+          Block adds: 1.5px border · 6px red shadow
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-stage" style="align-items:flex-start; flex-direction:column; gap:6px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:var(--fs-2xs); letter-spacing:2px; font-weight:700; color:var(--c-red);">// footnotes</div>
+          <div style="display:flex; gap:6px; align-items:flex-start;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:var(--fs-3xs); font-weight:800; color:var(--c-red); line-height:1.5;">1</span>
+            <span style="font-family:'IBM Plex Sans',sans-serif; font-size:var(--fs-xs); line-height:1.6;">Footnote text in IBM Plex Sans.</span>
+          </div>
+        </div>
+        <div class="comp-label">
+          <strong>FOOTNOTES</strong>
+          "// footnotes" header in red Mono · counter in red Mono 800 · text in Sans --fs-xs
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-stage" style="flex-direction:column; gap:8px; align-items:flex-start;">
+          <div style="border:1.5px solid var(--plate); max-width:120px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' viewBox='0 0 240 160'%3E%3Crect width='240' height='160' fill='%23ffd60a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='14' fill='%23171a20'%3Eimage%3C/text%3E%3C/svg%3E" alt="example image" style="max-width:100%; height:auto; display:block;">
+          </div>
+          <div style="font-size:var(--fs-xs); color:var(--dim); text-align:center;">figure caption text</div>
+        </div>
+        <div class="comp-label">
+          <strong>IMAGE</strong>
+          max-width 70% centered · 1.5px ink border · 6px ink shadow · figcaption at --fs-xs · --dim
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       07 — LIBRARY PAGE
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 007</span>
+      <h2 class="sec-title">Library page</h2>
+      <span class="sec-sub">· books grid, media grid, tags</span>
+    </div>
+    <div class="sec-body">
+      <p>The library page has two content types: books (shown in a 2-column auto-fill grid with covers) and media items (blog, video, podcast, other — shown as a narrower multi-column grid). Both use the same border and typography system as the rest of the site. Tags are small bordered labels with per-type translucent accent backgrounds.</p>
+    </div>
+
+    <!-- Tag examples -->
+    <h3 style="margin: 22px 0 12px; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700;">Media tags</h3>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+      <span class="lib-tag lib-tag-blog">BLOG</span>
+      <span class="lib-tag lib-tag-video">VIDEO</span>
+      <span class="lib-tag lib-tag-podcast">PODCAST</span>
+      <span class="lib-tag lib-tag-other">OTHER</span>
+      <span class="lib-tag lib-tag-reading">READING</span>
+    </div>
+    <div class="demo-label" style="margin-top:8px;">
+      <strong>LIBRARY TAGS</strong>
+      IBM Plex Mono · --fs-2xs · 700 · UPPERCASE · 1.5px ink border · translucent accent backgrounds · <code>reading</code> tag uses solid --c-green
+    </div>
+
+    <!-- Book cover example -->
+    <h3 style="margin: 28px 0 12px; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700;">Book entry</h3>
+    <div class="demo" style="align-items:flex-start; max-width: 480px;">
+      <div style="display:grid; grid-template-columns:72px 1fr; gap:0 14px; align-items:start;">
+        <div>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='108' viewBox='0 0 72 108'%3E%3Crect width='72' height='108' fill='%2300c2ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='10' fill='%23171a20'%3Ecover%3C/text%3E%3C/svg%3E" alt="book cover" style="width:72px; height:auto; border:1.5px solid var(--plate); display:block;">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:var(--fs-md); line-height:1.4;">The Name of the Wind</div>
+          <div style="font-size:var(--fs-xs); color:var(--dim); margin-top:3px;">Patrick Rothfuss</div>
+          <div style="font-size:var(--fs-2xs); letter-spacing:1px; text-transform:uppercase; color:var(--dim); margin-top:4px; font-style:italic; font-weight:400;">Fantasy, Epic</div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-label">
+      <strong>BOOK ITEM</strong>
+      72px cover · 1.5px ink border · title in --fs-md 700 · author in --fs-xs --dim · genres in italic --fs-2xs --dim
+    </div>
+
+    <!-- Series stacked book decoration -->
+    <h3 style="margin: 28px 0 12px; font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; font-weight:700;">Series cover decoration</h3>
+    <div class="demo demo-center">
+      <div style="position:relative; width:81px; height:117px; flex-shrink:0;">
+        <!-- Stack behind -->
+        <div style="position:absolute; top:0; left:0; right:9px; bottom:9px; border:1.5px solid var(--plate); background:var(--c-red); transform:translate(9px,9px); z-index:0;"></div>
+        <div style="position:absolute; top:0; left:0; right:9px; bottom:9px; border:1.5px solid var(--plate); background:var(--c-yellow); transform:translate(4px,4px); z-index:1;"></div>
+        <!-- Cover image -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='108' viewBox='0 0 72 108'%3E%3Crect width='72' height='108' fill='%2300c2ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='10' fill='%23171a20'%3Ecover%3C/text%3E%3C/svg%3E" alt="series cover" style="width:72px; height:auto; border:1.5px solid var(--plate); display:block; position:relative; z-index:2;">
+      </div>
+    </div>
+    <div class="demo-label">
+      <strong>SERIES COVER STACK</strong>
+      Two pseudo-elements behind the cover · ::before: yellow (4px offset) · ::after: red (9px offset) · 1.5px ink border on both · signals "this is a series"
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       08 — INTERACTIONS
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 008</span>
+      <h2 class="sec-title">Interactions</h2>
+      <span class="sec-sub">· hover, focus, reduced motion</span>
+    </div>
+    <div class="sec-body">
+      <p>Three interaction patterns are used across the site. Each applies to a specific context — they are not interchangeable. Animations always respect <code>prefers-reduced-motion: reduce</code>, which collapses all durations to 0.01ms.</p>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:22px;">
+
+      <div class="comp-card" style="flex-basis:100%;">
+        <div class="comp-stage" style="gap:32px; flex-wrap:wrap;">
+          <div>
+            <a href="#" class="t-text" style="font-size:var(--fs-base); font-weight:700;">hover me — body link</a>
+          </div>
+        </div>
+        <div class="comp-label">
+          <strong>.t-text — UNDERLINE REVEAL</strong>
+          Used for all readable body links (post titles on feed, prose links, bio tagline). No color change — only a 1px underline that scales in from left on hover. Preserves reading flow.
+        </div>
+      </div>
+
+      <div class="comp-card" style="flex-basis:100%;">
+        <div class="comp-stage">
+          <a href="#" class="t-glitch" style="font-family:'IBM Plex Mono',monospace; font-size:var(--fs-lg); font-weight:800; text-transform:uppercase; color:var(--plate);">ONEB</a>
+          <span style="color:var(--dim); font-size:var(--fs-xs); margin-left:16px;">(hover the wordmark)</span>
+        </div>
+        <div class="comp-label">
+          <strong>.t-glitch — CHROMATIC ABERRATION (text)</strong>
+          Used only on the wordmark / logo link. On hover: alternating cyan/red text-shadow at ±4–6px, stepping through 2 frames at 320ms. Simulates CRT channel misalignment.
+        </div>
+      </div>
+
+      <div class="comp-card" style="flex-basis:100%;">
+        <div class="comp-stage">
+          <nav class="nav-strip" style="margin:0; width:auto;">
+            <a href="#" class="nav-item">About</a>
+            <a href="#" class="nav-item">Archives</a>
+          </nav>
+          <span style="color:var(--dim); font-size:var(--fs-xs); margin-left:16px;">(hover a nav tile)</span>
+        </div>
+        <div class="comp-label">
+          <strong>NAV GLITCH — CHROMATIC ABERRATION (box)</strong>
+          Used on nav strip tiles. On hover: cyan/red box-shadow at ±3–5px steps + scrolling scan-line overlay (repeating-linear-gradient). Same CRT aesthetic as .t-glitch but applied to the box, not the text.
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-stage center">
+          <button style="all:unset; background:var(--c-red); color:var(--plate); border:1.5px solid var(--plate); padding:8px 14px; font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">Focus me</button>
+        </div>
+        <div class="comp-label">
+          <strong>FOCUS RING</strong>
+          <code>:focus-visible</code> → <code>outline: 2px solid var(--c-red)</code> · offset 3px · applies to all interactive elements globally
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       09 — USAGE RULES
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 009</span>
+      <h2 class="sec-title">Usage rules</h2>
+      <span class="sec-sub">· what to do and what to avoid</span>
+    </div>
+
+    <div class="do-dont">
+      <div class="col do">
+        <h4>Do</h4>
+        <ul>
+          <li>Use <strong>IBM Plex Mono</strong> for all UI chrome — nav, dates, labels, badges, the wordmark, and any code.</li>
+          <li>Use <strong>IBM Plex Sans</strong> for post titles on the feed and headings (h1–h3) inside prose.</li>
+          <li>Use <strong>IBM Plex Serif</strong> for all prose body text and post summaries on the feed.</li>
+          <li>Use ink black (<code>--plate</code>) for all borders — always <strong>1.5px solid</strong>.</li>
+          <li>Keep hard offset shadows pointing <strong>down-right</strong>: 8px (masthead), 6px (code, images), 4px (nav), 3px (badges).</li>
+          <li>Use the 5 accents in their <strong>positional order</strong> for nav tiles and pop-rule segments.</li>
+          <li>Limit each element to <strong>one accent color</strong>. Accents are ink-on-cream emphasis, not field fills.</li>
+          <li>Keep post body and prose inside a <strong>74ch</strong> max-width column.</li>
+          <li>Reserve <strong>.t-glitch</strong> for the wordmark and <strong>nav-glitch-box</strong> for nav tiles only.</li>
+          <li>Use <strong>.t-text</strong> (underline reveal) for all readable body links.</li>
+          <li>Always include <code>prefers-reduced-motion</code> support.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Don't introduce a fourth typeface. The three IBM Plex faces cover every typographic need.</li>
+          <li>Don't use rounded corners, soft drop-shadows, or gradients anywhere.</li>
+          <li>Don't pair two accents as 50/50 foreground/background. Accents appear on cream or ink, not on each other.</li>
+          <li>Don't use uppercase on post titles — they're sentence case IBM Plex Sans.</li>
+          <li>Don't apply chromatic glitch to body text or generic links — only the logo and nav tiles get it.</li>
+          <li>Don't color-shift links on hover — the underline reveal is the only signal.</li>
+          <li>Don't use emoji or raster iconography — ASCII glyphs only (●, ·, //, →).</li>
+          <li>Don't add borders or background fills to blockquotes beyond the 3px left border.</li>
+          <li>Don't break the single-column layout for page-level sections; only library grids may use multi-column.</li>
+          <li>Don't hard-code pixel sizes — always use the <code>--fs-*</code> scale tokens.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+
+  <!-- ════════════════════════════════════════════════════════
+       10 — CSS TOKENS
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">SEC 010</span>
+      <h2 class="sec-title">CSS tokens</h2>
+      <span class="sec-sub">· paste into :root · source: src/styles/global.css</span>
+    </div>
+    <div class="sec-body">
+      <p>All values below are defined in <code>src/styles/global.css</code> inside <code>:root</code>. Do not redefine them in component styles; reference the variables instead. Change <code>--fs-base</code> to rescale the entire type system proportionally.</p>
+    </div>
+
+    <pre class="token-block">:root {
+  /* Surfaces */
+  --bg:     #fafaf5;   /* page background        */
+  --plate:  #171a20;   /* ink black               */
+  --ink:    #171a20;   /* body text               */
+  --cream:  #fafaf5;   /* component fills         */
+  --dim:    rgba(23, 26, 32, 0.55);   /* secondary text       */
+  --hair:   rgba(23, 26, 32, 0.16);   /* hairline dividers    */
+
+  /* CRT accent palette */
+  --c-red:    #ff5d3a;   /* amber flare    — nav-1, plate shadow, hover */
+  --c-cyan:   #00c2ff;   /* ice cyan       — nav-2, glitch channel      */
+  --c-yellow: #ffd60a;   /* hot yellow     — nav-3                      */
+  --c-plum:   #ff2d75;   /* magenta pulse  — nav-4                      */
+  --c-green:  #00d97e;   /* phosphor green — nav-5, reading tag         */
+
+  /* Shadows — hard offset, always pointing down-right */
+  --shadow:        8px 8px 0 0 var(--c-red);    /* masthead plate */
+  --shadow-plate:  4px 4px 0 0 var(--plate);    /* nav strip      */
+  --shadow-red-sm: 6px 6px 0 0 var(--c-red);    /* code, images   */
+
+  /* Layout */
+  --gutter:      clamp(20px, 5vw, 56px);
+  --content-max: 760px;
+
+  /* Type scale (base: 1rem = 16px) */
+  --fs-base:    1rem;
+  --fs-3xs:     calc(var(--fs-base) *  9 / 14);   /* ~10px — wordmark, tiny labels */
+  --fs-2xs:     calc(var(--fs-base) * 10 / 14);   /* ~11px — swatch labels, tags   */
+  --fs-xs:      calc(var(--fs-base) * 11 / 14);   /* ~13px — dates, nav (mobile)   */
+  --fs-sm:      calc(var(--fs-base) * 12 / 14);   /* ~14px — nav (desktop), footer */
+  --fs-md:      calc(var(--fs-base) * 13 / 14);   /* ~15px — code blocks           */
+  --fs-lg:      calc(var(--fs-base) * 20 / 14);   /* ~23px — bio name, prose h3    */
+  --fs-h2:      clamp(
+    calc(var(--fs-base) * 20 / 14),
+    calc(3.2vw * 16 / 14),
+    calc(var(--fs-base) * 28 / 14)
+  );
+  --fs-h1:      clamp(
+    calc(var(--fs-base) * 26 / 14),
+    calc(4.4vw * 16 / 14),
+    calc(var(--fs-base) * 36 / 14)
+  );
+}</pre>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="margin-top: 60px;">
+    <span>ONEB · UI guidelines</span>
+    <span>Source: <code>src/styles/global.css</code></span>
+    <span>Updated 2026-06-16</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
